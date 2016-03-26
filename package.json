@@ -1,7 +1,7 @@
 {
   "name": "feed-my-starving-children",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project for IT353 at Illinois State University. Fundraiser for Feed My Starving Children organiation.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,13 @@
   "author": "Jonathan Mitchell",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4"
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "jimp": "^0.2.21",
+    "mongoose": "^4.4.10",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0"
   }
 }
