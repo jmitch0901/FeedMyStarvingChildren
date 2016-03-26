@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
 var pixelSchema = mongoose.Schema({
+    message: String,
     pixel:{
         x:Number,
         y:Number

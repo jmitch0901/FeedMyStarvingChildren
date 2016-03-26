@@ -53,6 +53,9 @@ app.get("/img",function(req,res){
     res.sendFile(__dirname+'/img/spongebob-small.jpg');
     
 });
+
+var routes = require("./routes");
+app.use(routes);
     
     
 app.listen(process.env.PORT || 8080, process.env.IP, function(){
