@@ -33,5 +33,8 @@ MainRouter.get("/img",function(req,res){
     
 });
 
+var UserRoute = require("./user");
+MainRouter.use(UserRoute);
+
 
 module.exports = MainRouter;
