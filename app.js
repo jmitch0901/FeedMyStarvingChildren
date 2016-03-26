@@ -26,6 +26,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.get('/',function(req,res){
+   res.sendFile(__dirname + '/public/login.html'); 
+});
+
 
 var routes = require("./routes");
 app.use(routes);

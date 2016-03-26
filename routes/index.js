@@ -5,7 +5,7 @@ var express = require("express"),
     
 MainRouter.get('/',function(req,res){
     
-    res.sendFile(__dirname + '/public/login.html');
+    res.sendFile(__dirname+'/../public/login.html');
     
 });
 
