@@ -36,7 +36,17 @@ module.exports = {
                     owned.push(p.pixel);
                 });
                 
-                self.pixelsAvailable = _.difference(available,owned);
+                
+                //console.log('AVAIL');
+                //console.log(available);
+                
+                
+                // console.log('OWNED');
+                // console.log(owned);
+                
+            
+                
+                self.pixelsAvailable = available; //difference(available,owned);
                 console.log(self.pixelsAvailable.length + " pixels available.");
                 console.log(self.pixelsOwned.length + " pixels have been bought.");
                 ImageHandler.init(self.pixelsAvailable,self.pixelsOwned);
@@ -83,20 +93,25 @@ module.exports = {
                buyer:{
                    id:userID
                }
-            }));
+            }).toObject());
         }
+        
+        //console.log(randomPixels.length);
         
 
         //insert which pixels I just bought
         PixelSchema.collection.insert(randomPixels,function(err,insertedPixels){
             
             if(err){
+                //console.log(randomPixels);
                 console.log("Error inserting Pixel Objects into mongo!");
                 console.log(err);
                 return callbacks("There was a server error while buying your pixels. Please try again later.",undefined);
             }
 
-            console.log("I just inserted "+ insertedPixels.length + " pixels into your schema!");
+
+            //console.log(insertedPixels);
+            console.log("I just inserted "+ insertedPixels.insertedCount + " pixels into your schema!");
             
             //IMPORTANT!
             randomIndexes.sort();
@@ -105,7 +120,11 @@ module.exports = {
                 self.pixelsAvailable.splice(randomIndexes[i],1);
             }
             
-            callbacks(undefined,insertedPixels);
+            
+            //console.log(insertedPixels.ops);
+            
+            ImageHandler.revealPixels(insertedPixels.ops,callbacks);
+            // callbacks(undefined,insertedPixels);
         });
     }
     
