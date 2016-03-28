@@ -6,10 +6,13 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./schemas/user"),
+    PixelHandler = require("./factories/pixelHandler"),
     Jimp = require("jimp");
     
     
 mongoose.connect('mongodb://localhost/fmsc');
+
+PixelHandler.init();
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));

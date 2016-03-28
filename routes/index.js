@@ -3,11 +3,11 @@ var express = require("express"),
     
     
     
-MainRouter.get('/',function(req,res){
+// MainRouter.get('/',function(req,res){
     
-    res.sendFile(__dirname+'/../public/login.html');
+//     res.sendFile(__dirname+'/../public/login.html');
     
-});
+// });
 
 
 MainRouter.get("/img",function(req,res){
