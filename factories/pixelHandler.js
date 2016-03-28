@@ -1,5 +1,6 @@
 var Mongoose = require("mongoose"),
     _ = require("underscore"),
+    Lodash = require("lodash"),
     PixelSchema = require("../schemas/pixel"),
     ImageHandler = require("./imageHandler");
 
@@ -17,38 +18,39 @@ module.exports = {
             console.log("We are inside the database for pixel factory!");
             
             PixelSchema.find(function(err,pixels){
+                
+                
                 if(err){
                     return console.log("There was an error grabbing pixels from Mongo.");
                 }
-                
-                var available = [];
-                
-                for(var i = 1; i <= 1000; i++){
-                    for(var j = 1; j <= 1000; j++){
-                        available.push({x:i,y:j});
-                    }
-                }
-                
-                var owned = [];
+            
                 
                 self.pixelsOwned = pixels;
-                pixels.forEach(function(p){
-                    owned.push(p.pixel);
+                self.pixelsOwned.sort(function(a,b){
+                    return 1000*(a.pixel.x-b.pixel.x) + (a.pixel.y - b.pixel.y);
                 });
                 
                 
-                //console.log('AVAIL');
-                //console.log(available);
+                var available = [];
+                var oIndex = 0;
+                for(var i = 1; i <= 1000; i++){
+                    for(var j = 1; j <= 1000; j++){
+                        if(oIndex < self.pixelsOwned.length && i == self.pixelsOwned[oIndex].pixel.x && j == self.pixelsOwned[oIndex].pixel.y){
+                            oIndex++;
+                        } else {
+                            available.push({x:i,j:i});
+                        }
+                    }
+                }
                 
                 
-                // console.log('OWNED');
-                // console.log(owned);
+
                 
-            
+                self.pixelsAvailable = available;
                 
-                self.pixelsAvailable = available; //difference(available,owned);
                 console.log(self.pixelsAvailable.length + " pixels available.");
                 console.log(self.pixelsOwned.length + " pixels have been bought.");
+                
                 ImageHandler.init(self.pixelsAvailable,self.pixelsOwned);
             });
         });
@@ -129,3 +131,15 @@ module.exports = {
     }
     
 };
+
+//OLD sort code
+// var ownedIndex = self.pixelsOwned.length - 1;
+// for(var i = available.length - 1; i >= 0 && ownedIndex >= 0; i--){
+//     if(
+//         self.pixelsOwned[ownedIndex].pixel.x == available[i].x
+//         && self.pixelsOwned[ownedIndex].pixel.y == available[i].y
+//         ){
+//             available.splice(i,1);
+//             ownedIndex--;
+//         }
+// }
