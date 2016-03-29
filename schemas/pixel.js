@@ -6,6 +6,7 @@ var pixelSchema = mongoose.Schema({
         x:Number,
         y:Number
     },
+    isBought:{type:Boolean, default:false},
     buyer:{
         id:{
             type:mongoose.Schema.Types.ObjectId,
