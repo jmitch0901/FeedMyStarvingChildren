@@ -6,12 +6,11 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./schemas/user"),
-    PixelHandler = require("./factories/pixelHandler"),
+    PixelHandler = require("./factories/pixelHandlerv2"),
     Jimp = require("jimp");
-    
-    
-mongoose.connect('mongodb://localhost/fmsc');
 
+
+mongoose.connect('mongodb://localhost/fmsc');
 PixelHandler.init();
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -30,14 +29,14 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.get('/',function(req,res){
-   res.sendFile(__dirname + '/public/login.html'); 
+   res.sendFile(__dirname + '/public/login.html');
 });
 
 
 var routes = require("./routes");
 app.use(routes);
-    
-    
+
+
 app.listen(process.env.PORT || 8080, process.env.IP, function(){
-   console.log("Server Started!"); 
+   console.log("Server Started!");
 });
