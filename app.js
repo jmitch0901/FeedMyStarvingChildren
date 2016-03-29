@@ -6,8 +6,7 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./schemas/user"),
-    PixelHandler = require("./factories/pixelHandlerv2"),
-    Jimp = require("jimp");
+    PixelHandler = require("./factories/pixelHandlerv2");
 
 
 mongoose.connect('mongodb://localhost/fmsc');

@@ -18,7 +18,10 @@ var pixelSchema = new mongoose.Schema({
     }
 });
 
-pixelSchema.plugin(MongooseRandom);
+pixelSchema.plugin(MongooseRandom,{path:'r'});
+
+var MongooseModel = mongoose.model("Pixel",pixelSchema);
+
 
 //Should i store users name in this pixel model?
-module.exports = mongoose.model("Pixel",pixelSchema);
+module.exports = MongooseModel;

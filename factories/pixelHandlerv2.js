@@ -1,12 +1,12 @@
 var Mongoose = require("mongoose"),
     PixelSchema = require("../schemas/pixel"),
     Jimp = require('jimp');
-
-
-module.exports = {
-  init: function(){
-
-    Jimp.read(__dirname+"/../img/secret-image.jpg")
+    
+    
+    
+function reloadImage(callbacks){
+  
+     Jimp.read(__dirname+"/../img/secret-image.jpg")
     .then(function(secretPic){
 
         console.log("Reading secret image!");
@@ -34,23 +34,63 @@ module.exports = {
                 console.log('done with Mongo init.');
                 releasedPic.write(__dirname+"/../img/releasable-image.jpg",function(){
                 console.log("done writing new image after bought pixels!");
+                if(callbacks){
+                  callbacks();
+                }
               });
             });
         });
-    });
+    }); 
+};
+
+
+module.exports = {
+  init: function(){
+
+    reloadImage();
+
   },
   buyPixels: function(userID,message,amount,callbacks){
-
+    
+    var self = this;
+    
+    PixelSchema
+    .findRandom({isBought:false},{},{limit:amount},function(err,pixelObjs){
+      
+        if(err){
+          console.log(err);
+          return callbacks();
+        }
+        
+        pixelObjs.forEach(function(pix){
+          pix.buyer.id = Mongoose.Types.ObjectId();
+          pix.message = message;
+          pix.isBought = true;
+          pix.save(function(err){
+            if(err){
+              console.log(err);
+            }
+          });
+         });
+      
+      console.log("Done altering bought values in DB.");
+      
+      reloadImage(callbacks);
+      
+      
+      
+    });
+    
 
     // PixelSchema.findRandom({isBought:false}).limit(10).exec(function(err,pixelObjs){
     //   console.log(pixelObjs);
     //   callbacks(undefined);
     // });
 
-    PixelSchema.findRandom({isBought:false},{},{limit:10},function(err,pixelObjs){
-      console.log(pixelObjs);
-      callbacks(undefined);
-    });
+    // PixelSchema.findRandom({isBought:false},{},{limit:10},function(err,pixelObjs){
+    //   console.log(pixelObjs);
+    //   callbacks(undefined);
+    // });
 
 
     // PixelSchema
@@ -58,35 +98,35 @@ module.exports = {
     //   {$set:{
     //     'buyer.id': Mongoose.Types.ObjectId(),
     //     'message': message,
-    //     'isBought': true}
+    //     'isBought': true }
     //   },{
     //     multi:true
     //   })
-    // .limit(1000)
+    // .limit(10)
     // .exec(function(err,pixelObjs){
     //   if(err){
     //     return console.log(err);
     //   }
     //   console.log("Got back "+ pixelObjs.length + " PixelObjs");
+    //   callbacks();
+    //   // var pixels = pixelObjs.pop();
+    //   // pixels.isBought = true;
+    //   // pixels.buyer.id = Mongoose.Types.ObjectId();
+    //   // pixels.message = message;
+    //   // console.log(pixels);
 
-      // var pixels = pixelObjs.pop();
-      // pixels.isBought = true;
-      // pixels.buyer.id = Mongoose.Types.ObjectId();
-      // pixels.message = message;
-      // console.log(pixels);
 
-
-      // pixels.save(function(err,product,numAffected){
-      //   if(err){
-      //     console.log(err);
-      //     return callbacks(undefined);
-      //   }
-      //
-      //   console.log("Rows affected: "+numAffected);
-      //   console.log(product);
-      //   callbacks(undefined);
-      // });
-    //});
+    //   // pixels.save(function(err,product,numAffected){
+    //   //   if(err){
+    //   //     console.log(err);
+    //   //     return callbacks(undefined);
+    //   //   }
+      
+    //   //   console.log("Rows affected: "+numAffected);
+    //   //   console.log(product);
+    //   //   callbacks(undefined);
+    //   // });
+    // });
 
   }
 };
