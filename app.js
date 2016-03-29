@@ -35,7 +35,7 @@ app.get('/',function(req,res){
 
 
 var routes = require("./routes");
-app.use('/',routes);
+app.use(routes);
     
     
 app.listen(process.env.PORT || 8080, process.env.IP, function(){

@@ -6,25 +6,21 @@ var express = require("express"),
     
     
 MainRouter.get('/',function(req,res){
-    
+    console.log("Hitting /");
     res.sendFile(__dirname+'/../public/login.html');
-    
 });
 
 
 MainRouter.get("/img",function(req,res){
     
+    console.log("Hitting /img");
     
-    PixelHandler.buyPixels('100','suh dude',25,function(err){
+    PixelHandler.buyPixels('100','suh dude',10000,function(err){
         if(err){
             console.log(err);
         }
         res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.jpg'));
     });
-
-    
-
-    
 });
 
 var UserRoute = require("./user");

@@ -6,6 +6,29 @@ var Mongoose = require("mongoose"),
 
 
 
+
+function pixelComparor(a,b){
+    //return 1000*(a.pixel.x-b.pixel.x) + (a.pixel.y - b.pixel.y);
+    
+    var n = a.pixel.x - b.pixel.x;
+    if(n !== 0){
+        return n;
+    }
+    
+    var temp = a.pixel.y - b.pixel.y;
+    
+    if(temp === 0){
+        console.log("YOU GOT TWO EQUAL PIXELS IN DATABASE!");
+        console.log("A:");
+        console.log(a);
+        console.log("B: ");
+        console.log(b);
+    }
+    
+    return temp;
+}
+
+
 module.exports = {
     
     pixelsAvailable:undefined,
@@ -26,9 +49,7 @@ module.exports = {
             
                 
                 self.pixelsOwned = pixels;
-                self.pixelsOwned.sort(function(a,b){
-                    return 1000*(a.pixel.x-b.pixel.x) + (a.pixel.y - b.pixel.y);
-                });
+                self.pixelsOwned.sort(pixelComparor);
                 
                 
                 var available = [];
@@ -38,20 +59,19 @@ module.exports = {
                         if(oIndex < self.pixelsOwned.length && i == self.pixelsOwned[oIndex].pixel.x && j == self.pixelsOwned[oIndex].pixel.y){
                             oIndex++;
                         } else {
-                            available.push({x:i,j:i});
+                            available.push({x:i,y:j});
                         }
                     }
                 }
-                
-                
 
+                
                 
                 self.pixelsAvailable = available;
                 
                 console.log(self.pixelsAvailable.length + " pixels available.");
                 console.log(self.pixelsOwned.length + " pixels have been bought.");
                 
-                ImageHandler.init(self.pixelsAvailable,self.pixelsOwned);
+                ImageHandler.init(self.pixelsAvailable);
             });
         });
         
@@ -63,6 +83,11 @@ module.exports = {
     buyPixels: function(userID,message,amount,callbacks){
         
         var self = this;
+        
+        console.log("IM BUYING PIXELS NOW!");
+        console.log("Pixels available size: " + this.pixelsAvailable.length);
+        console.log("Amount of pixels owned: " + this.pixelsOwned.length);
+
         
         if(this.isSoldOut()){
             var err = "Can't buy pixels because they are sold out!";
@@ -79,26 +104,34 @@ module.exports = {
         
         var randomIndexes = [];
         var randomPixels = [];
+        
         for(var i = 0; i < amount; i++){
             
-            var randomIndex = Math.floor(Math.random() * this.pixelsAvailable.length);
+            var randomIndex = Number(Math.floor(Math.random() * self.pixelsAvailable.length));
             if(_.contains(randomIndexes,randomIndex)){
                 console.log("got that index previously, continuing...");
                 i--;
                 continue;
             }
             
-            randomIndexes.push(randomIndex);
+            randomIndexes.push(Number(randomIndex));
             randomPixels.push(new PixelSchema({
                message:message,
-               pixel:this.pixelsAvailable[randomIndex],
+               pixel:self.pixelsAvailable[randomIndex],
                buyer:{
                    id:userID
                }
             }).toObject());
         }
         
+        
+        randomPixels.forEach(function(pixelObj){
+           self.pixelsOwned.push({x:pixelObj.pixel.x,y:pixelObj.pixel.y}); 
+        });
+        
+        
         //console.log(randomPixels.length);
+        
         
 
         //insert which pixels I just bought
@@ -116,7 +149,11 @@ module.exports = {
             console.log("I just inserted "+ insertedPixels.insertedCount + " pixels into your schema!");
             
             //IMPORTANT!
-            randomIndexes.sort();
+            randomIndexes.sort(function(a,b){
+                return a-b;
+            });
+            
+            console.log(randomIndexes);
             
             for(var i = randomIndexes.length - 1; i >= 0; i--){
                 self.pixelsAvailable.splice(randomIndexes[i],1);
@@ -125,6 +162,11 @@ module.exports = {
             
             //console.log(insertedPixels.ops);
             
+            if(!insertedPixels.ops){
+                console.log("No pixels returned?");
+                return callbacks(undefined);
+            }
+            
             ImageHandler.revealPixels(insertedPixels.ops,callbacks);
             // callbacks(undefined,insertedPixels);
         });
@@ -132,7 +174,14 @@ module.exports = {
     
 };
 
-//OLD sort code
+                
+// for(var i = 1; i <= 1000; i++){
+//     for(var j = 1; j <= 1000; j++){
+//         available.push({x:i,y:j});
+//     }
+// }
+
+// //OLD sort code
 // var ownedIndex = self.pixelsOwned.length - 1;
 // for(var i = available.length - 1; i >= 0 && ownedIndex >= 0; i--){
 //     if(
@@ -142,4 +191,20 @@ module.exports = {
 //             available.splice(i,1);
 //             ownedIndex--;
 //         }
+// }
+
+
+//Verify no matches between available and purchased pixel array.
+// for(var i = 0; i < available.length; i++){
+    
+//     for(var j = 0; j < self.pixelsOwned.length; j++){
+        
+//         var temp = self.pixelsOwned[j];
+        
+//         if(available[i].x == temp.pixel.x && available[i].y == temp.pixel.y){
+//             console.log("TWO ENTRIES EQUAL EACHOTHER!");
+//         }
+        
+        
+//     }
 // }
