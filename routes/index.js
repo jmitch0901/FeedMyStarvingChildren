@@ -2,7 +2,7 @@ var express = require("express"),
     Path = require("path"),
     PixelHandler = require("../factories/pixelHandlerv2"),
     passport = require("passport"),
-    MainRouter = express.Router();
+    MainRouter = express.Router({mergeParams:true});
 
 
 //TODO
@@ -26,19 +26,26 @@ MainRouter.get("/img",function(req,res){
     //res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.jpg'));
 });
 
+
+MainRouter.get("/login",function(req,res){
+  res.json({message:"Login in by making POST request to /login.",isLoggedIn:req.isAuthenticated()});
+});
+
 //TODO
+//passport.authenticate("local",{failureRedirect:"/login"}),
 MainRouter.post('/login',passport.authenticate("local"),function(req,res){
-  if(res.isAuthenticated()){
-    res.redirect('/user/'+req.user.id);
-  } else {
-    res.status(401);
-    res.json({error:"Invalid credentials"});
+  if(req.isAuthenticated()){
+    res.status(406);
+    return res.json({error:"Please log out first!"});
   }
+
+  console.log(req.user);
+  res.json({message:"Hello " + ", you are now logged in."});
 });
 
 MainRouter.get('/logout',function(req,res){
   req.logout();
-  req.redirect('/');
+  res.redirect('/');
 });
 
 var UserRoute = require("./user");

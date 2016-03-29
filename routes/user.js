@@ -14,15 +14,17 @@ UserRouter.get('/user',function(req,res){
 
 //TODO
 UserRouter.post('/user',Middleware.checkUserRegistry,function(req,res){
-    //res.send("Hit user post route.");
+    console.log("Hit user post route.");
     var userBody = req.body.user;
-    console.log(userBody);
+    //console.log(userBody);
     var user = {
       firstname: userBody.firstname,
       lastname: userBody.lastname,
       email: userBody.email
     }
 
+    console.log("Registering User...YOUR PASS!");
+    console.log(userBody.password);
     UserSchema.register(user,userBody.password,function(err,result){
       if(err){
         console.log(err);
@@ -30,16 +32,19 @@ UserRouter.post('/user',Middleware.checkUserRegistry,function(req,res){
         return res.json({error:err});
       }
 
-      passport.authenticate("local")(req,res,function(){
-        console.log("Just registered and authenticated new user: ");
-        console.log(req.user);
-        res.redirect('/user/'+req.user.id);
-      });
-    })
+      console.log("YOUR RESULT AFTER REGISTER!");
+      console.log(result._id.toString());
+
+      // passport.authenticate("local")(req,res,function(){
+      //   console.log("Just registered and authenticated new user: ");
+      //   console.log(req.user);
+        res.json({success:"You have successfully registered! You can now login with a POST request to /login."});
+    });
 
 });
 
 UserRouter.get('/user/:id_user',Middleware.isLoggedIn,function(req,res){
+    console.log("Got GET current user route!");
     res.json({me:req.user});
 });
 
