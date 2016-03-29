@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/fmsc');
 PixelHandler.init();
 
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(expressSession({
     secret: "HYYa<qv\\v?faJ8Lr8vc\\",//Change this to enviroment variable later
