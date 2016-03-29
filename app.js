@@ -6,7 +6,7 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./schemas/user"),
-    PixelHandler = require("./factories/pixelHandler"),
+    PixelHandler = require("./factories/pixelHandlerv2"),
     Jimp = require("jimp");
     
     
