@@ -6,7 +6,8 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./schemas/user"),
-    PixelHandler = require("./factories/pixelHandlerv2");
+    PixelHandler = require("./factories/pixelHandlerv2"),
+    HTTPS = require('https');
 
 
 mongoose.connect('mongodb://localhost/fmsc');
@@ -30,15 +31,20 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get('/',function(req,res){
-   res.sendFile(__dirname + '/public/login.html');
-});
-
 
 var routes = require("./routes");
 app.use(routes);
 
-
+//http requests
 app.listen(process.env.PORT || 8080, process.env.IP, function(){
-   console.log("Server Started!");
+   console.log("HTTP Server Started!");
 });
+
+
+var certOptions = require('./configs/certs');
+
+HTTPS.createServer(certOptions,app).listen(3000,function(){
+  console.log("HTTPS SERVER STARTED");
+});
+
+//https requests

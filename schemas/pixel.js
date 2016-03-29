@@ -1,8 +1,6 @@
 var mongoose = require("mongoose");
 var MongooseRandom = require("mongoose-simple-random");
 
-
-
 var pixelSchema = new mongoose.Schema({
     message: String,
     pixel:{

@@ -5,6 +5,13 @@ var Passport = require('passport'),
 
 
 var Middleware = {
+  ensureHTTPS:function(req,res,next){
+    if(req.secure){
+      return next();
+    }
+
+    res.redirect('https://'+req.host+req.url);
+  },
   isLoggedIn: function(req,res,next){
     if(req.isAuthenticated()){
       return next();
@@ -38,6 +45,9 @@ var Middleware = {
 
       next();
     });
+  },
+  checkValidBuyParams: function(req,res,next){
+
   }
 };
 
