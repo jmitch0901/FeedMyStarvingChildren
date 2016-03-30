@@ -54,7 +54,7 @@ UserRouter.put('/user/:id_user',function(req,res){
 //TODO
 UserRouter.post('/user/:id_user/buy',Middleware.isLoggedIn,function(req,res){
 
-  PixelHandler.buyPixels('100','suh dude',100000,function(err){
+  PixelHandler.buyPixels('100','suh dude',1000,function(err){
       if(err){
           console.log(err);
       }
