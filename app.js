@@ -35,16 +35,28 @@ passport.deserializeUser(User.deserializeUser());
 var routes = require("./routes");
 app.use(routes);
 
+
+
 //http requests
-app.listen(process.env.PORT || 8080, process.env.IP, function(){
+var httpListener = app.listen(process.env.PORT || 8080, process.env.IP, function(){
    console.log("HTTP Server Started!");
 });
 
 
-var certOptions = require('./configs/certs');
+//https requests
 
-HTTPS.createServer(certOptions,app).listen(3000,function(){
+var certOptions = require('./configs/certs');
+var httpsListener = HTTPS.createServer(certOptions,app).listen(3000,function(){
   console.log("HTTPS SERVER STARTED");
 });
 
-//https requests
+
+var Socket = require('./factories/socket');
+
+var httpSocket = new Socket(httpListener);
+var httpsSocket = new Socket(httpsListener);
+
+
+//WRAP the io events.
+// var io = require('./factories/socketFactory');
+// io(app);
