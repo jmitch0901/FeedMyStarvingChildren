@@ -12,7 +12,7 @@ MainRouter.get('/',function(req,res){
 
 
 
-MainRouter.get("/login",Middleware.ensureHTTPS,function(req,res){
+MainRouter.get("/login",function(req,res){
   res.json({message:"Login in by making POST request to /login.",isLoggedIn:req.isAuthenticated()});
 });
 

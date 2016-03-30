@@ -2,7 +2,9 @@ var express = require("express"),
     UserRouter = express.Router({mergeParams:true}),
     UserSchema = require('../schemas/user'),
     Middleware = require('./middleware'),
-    passport = require("passport");
+    passport = require("passport"),
+    PixelHandler = require("../factories/pixelHandlerv2"),
+    Path = require("path");
 
 
 
@@ -44,15 +46,15 @@ UserRouter.put('/user/:id_user',function(req,res){
     res.send("Hit user_id put route.");
 });
 
-//TODO
-UserRouter.post('/user/:id_user/buy',function(req,res){
-    res.send("Hit buy post route.");
-});
+// //TODO
+// UserRouter.post('/user/:id_user/buy',function(req,res){
+//     res.send("Hit buy post route.");
+// });
 
 //TODO
 UserRouter.post('/user/:id_user/buy',Middleware.isLoggedIn,function(req,res){
 
-  PixelHandler.buyPixels('100','suh dude',10000,function(err){
+  PixelHandler.buyPixels('100','suh dude',100000,function(err){
       if(err){
           console.log(err);
       }

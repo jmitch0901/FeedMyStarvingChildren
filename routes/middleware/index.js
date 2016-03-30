@@ -6,11 +6,17 @@ var Passport = require('passport'),
 
 var Middleware = {
   ensureHTTPS:function(req,res,next){
+    // console.log("SECURE??? -> ");
+    // console.log(req.secure);
     if(req.secure){
       return next();
     }
 
-    res.redirect('https://'+req.host+req.url);
+    var httpsPort = process.env.HTTPS_PORT || 3000;
+
+    var redirString = 'https://'+req.host+':'+httpsPort+req.url;
+    console.log("REDIRECTING YOU TO -> "+redirString);
+    res.redirect(redirString);
   },
   isLoggedIn: function(req,res,next){
     if(req.isAuthenticated()){
