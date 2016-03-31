@@ -14,6 +14,7 @@
     <!-- <link rel="stylesheet" href="styles/main.css"> -->
     <link type="text/css" rel="stylesheet" href="css/cssLayout.css" />
     <link type="text/css" rel="stylesheet" href="css/default.css" />
+    <link type="text/css" rel="stylesheet" href="css/animations.css" />
     <!-- endbuild -->
   </head>
   <body ng-app="App">
@@ -25,20 +26,7 @@
       <h1>Welcome! Please log in.</h1>
     </div>
 
-    <div id="content" class="center_content">
-      <form id="j_idt13" name="j_idt13" method="post" action="/FMSCProject/faces/template.xhtml" enctype="application/x-www-form-urlencoded">
-        <input type="hidden" name="j_idt13" value="j_idt13" />
-          Email:<br />
-            <input id="j_idt13:usernameID" type="text" name="j_idt13:usernameID" class="text-input" /><br /><br />
-          Password:<br />
-            <input id="j_idt13:passwordID" type="password" name="j_idt13:passwordID" value="" class="text-input" /><br /><br /><input id="j_idt13:submitID" type="submit" name="j_idt13:submitID" value="Log In" class="button" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="7376794622862325380:-3822056445453155081" autocomplete="off" />
-      </form>
-    </div>
-
-    <div id="bottom">
-      <h3>Not yet a member?<br />
-        Click <a href="register.html">here</a> to register.</h3>
-    </div>
+    <div ng-view></div>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -48,8 +36,11 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+
     <!-- My App -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/loginController.js"></script>
+    <script src="scripts/controllers/registerController.js"></script>
   </body>
 </html>
 
