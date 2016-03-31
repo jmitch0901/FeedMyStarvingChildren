@@ -46,10 +46,6 @@ UserRouter.put('/user/:id_user',function(req,res){
     res.send("Hit user_id put route.");
 });
 
-// //TODO
-// UserRouter.post('/user/:id_user/buy',function(req,res){
-//     res.send("Hit buy post route.");
-// });
 
 //TODO
 UserRouter.post('/user/:id_user/buy',Middleware.isLoggedIn,function(req,res){
@@ -72,6 +68,7 @@ UserRouter.put('/me',Middleware.isLoggedIn,function(req,res){
   res.redirect('/user/'+req.user._id);
 });
 
+//TODO -> BAD ROUTE
 UserRouter.post('/me/buy',Middleware.isLoggedIn,function(req,res){
   res.redirect('/user/'+req.user._id+'/buy');
 });
