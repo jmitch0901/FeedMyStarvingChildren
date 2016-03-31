@@ -7,7 +7,7 @@ var express = require("express"),
     LocalStrategy = require("passport-local"),
     User = require("./schemas/user"),
     PixelHandler = require("./factories/pixelHandlerv2"),
-    HTTPS = require('https');
+    https = require('https');
 
 
 mongoose.connect('mongodb://localhost/fmsc');
@@ -33,23 +33,18 @@ passport.deserializeUser(User.deserializeUser());
 
 
 var routes = require("./routes");
-app.use(routes);
-
-
+app.use('/api',routes);
 
 //http requests
 var httpListener = app.listen(process.env.PORT || 8080, process.env.IP, function(){
    console.log("HTTP Server Started!");
 });
 
-
-//https requests
-
+//HTTPS
 var certOptions = require('./configs/certs');
-var httpsListener = HTTPS.createServer(certOptions,app).listen(3000,function(){
+var httpsListener = https.createServer(certOptions,app).listen(3000,function(){
   console.log("HTTPS SERVER STARTED");
 });
-
 
 var Socket = require('./factories/socket');
 
