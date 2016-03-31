@@ -14,7 +14,7 @@ function reloadImage(callbacks){
         Jimp.read(__dirname+"/../img/releasable-image.jpg")
         .then(function(releasedPic){
 
-            console.log("Reading releasable image!");
+            console.log("Writing to Releasable image!");
 
             PixelSchema.find({})
               .lean()
