@@ -1,27 +1,38 @@
 <div class="photo">
-  <div align="right"><a href="#/login">Login</a></div>
-    <h1>Feed My Starving Pixels!</h1>
-    <img src="img/FMSClogo.png" style="width:298px;height:142px;"><br />
-    <p></p>
-    <dialog id="about">
-    Feed My Starving Children (FMSC), is a non-profit organization whose vision is to eliminate starvation in children throughout the world. Their approach is to have volunteers hand-pack meals specially formulated for malnourished children, and send them to partners around the world where they're used to operate orphanages, schools, clinics, and feeding programs to break the cycle of poverty. FMSC food has reached more than 70 countries. FMSC experienced an average annual growth rate of 48% in the past decade. FMSC meals costs only 22 cents each, and 92% of total donations go directly on meal production.<p>
-    <b>If you would like to donate, click on the "buy pixels" button. Each pixel is 22 cents, the cost of one meal. Each pixel that is bought will reveal more of the secret photo!<br></b>
-    <sub>*All proceeds will go to Feed My Starving Children.</sub><p>
-    <a href="">Close</a></p>
-    </dialog>
-    <dialog id="buyPixels">
-    Sign in with<br><a href="http://www.paypal.com"><img src="img/paypal.png" style="width:100px;height:25.5px;"></a>
-    <p><a href="">Close</a></p>
-    </dialog>
 
-    <!-- TODO  add my onClick rules-->
-    <button >About</button>
-    <button >Buy Pixels</button><p>
-    <img id="releasable-image" src="https://localhost:3000/api/img">
-    <div align="right">
-      <a href="http://www.facebook.com"><img src="img/facebook.png" style="height:25px;"></a>
-      <a href="http://www.twitter.com"><img src="img/twitter.png" style="height:25px;"></a>
-      <a href="http://linkedin.com"><img src="img/linkedin.png" style="height:25px;"></a>
-      <a href="http://plus.google.com"><img src="img/googleplus.png" style="height:25px;"></a>
+  <div align="right">
+    <a class="btn btn-primary btn-lg" href="#/login" ng-show="!isLoggedIn" class="btn" ng-click="isLoggedIn = !isLoggedIn">Login</a>
+
+    <span ng-show="isLoggedIn">
+      <button class="btn" ng-click="isLoggedIn = !isLoggedIn">Logout</button>
+      <h3> Hello {{userName}}    </h3>
+    </span>
+
+    <!-- <a  href="#/login">Login</a> -->
+  </div>
+
+  <h1>Feed My Starving Pixels!</h1>
+  <img src="img/FMSClogo.png" style="width:298px;height:142px;"><br />
+  <p></p>
+  <dialog id="about">
+  Feed My Starving Children (FMSC), is a non-profit organization whose vision is to eliminate starvation in children throughout the world. Their approach is to have volunteers hand-pack meals specially formulated for malnourished children, and send them to partners around the world where they're used to operate orphanages, schools, clinics, and feeding programs to break the cycle of poverty. FMSC food has reached more than 70 countries. FMSC experienced an average annual growth rate of 48% in the past decade. FMSC meals costs only 22 cents each, and 92% of total donations go directly on meal production.<p>
+  <b>If you would like to donate, click on the "buy pixels" button. Each pixel is 22 cents, the cost of one meal. Each pixel that is bought will reveal more of the secret photo!<br></b>
+  <sub>*All proceeds will go to Feed My Starving Children.</sub><p>
+  <a href="">Close</a></p>
+  </dialog>
+  <dialog id="buyPixels">
+  Sign in with<br><a href="http://www.paypal.com"><img src="img/paypal.png" style="width:100px;height:25.5px;"></a>
+  <p><a href="">Close</a></p>
+  </dialog>
+
+  <!-- TODO  add my onClick rules-->
+  <button >About</button>
+  <button >Buy Pixels</button><p>
+  <img id="releasable-image" src="https://localhost:3000/api/img">
+  <div align="right">
+    <a href="http://www.facebook.com"><img src="img/facebook.png" style="height:25px;"></a>
+    <a href="http://www.twitter.com"><img src="img/twitter.png" style="height:25px;"></a>
+    <a href="http://linkedin.com"><img src="img/linkedin.png" style="height:25px;"></a>
+    <a href="http://plus.google.com"><img src="img/googleplus.png" style="height:25px;"></a>
   </div>
 </div>
