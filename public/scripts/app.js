@@ -2,11 +2,14 @@ angular.module('App',['ngRoute','ngResource','ngAnimate'])
 .config(function($routeProvider){
   $routeProvider
     .when('/',{
-      templateUrl: '../templates/login.html',
-      controller: 'LoginCtrl'
+      templateUrl: '../templates/home.html',
+      controller: 'HomeCtrl'
     })
-    .when('/register',{
-      templateUrl: '../templates/register.html',
-      controller: 'RegisterCtrl'
-    });
+    .when('/login',{
+      templateUrl: '../templates/login.html'
+    })
+    // .when('/register',{
+    //   templateUrl: '../templates/register.html',
+    //   controller: 'RegisterCtrl'
+    // });
 });

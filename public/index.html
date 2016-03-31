@@ -12,19 +12,19 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <!-- <link rel="stylesheet" href="styles/main.css"> -->
-    <link type="text/css" rel="stylesheet" href="css/cssLayout.css" />
-    <link type="text/css" rel="stylesheet" href="css/default.css" />
-    <link type="text/css" rel="stylesheet" href="css/animations.css" />
+    <!-- <link type="text/css" rel="stylesheet" href="css/cssLayout.css" /> -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <!-- <link type="text/css" rel="stylesheet" href="css/animations.css" /> -->
     <!-- endbuild -->
   </head>
   <body ng-app="App">
 
-    <div id="top-logo">
+    <!-- <div id="top-logo">
       <img src="img/FMSC.png" />
     </div>
     <div id="top">
       <h1>Welcome! Please log in.</h1>
-    </div>
+    </div> -->
 
     <div ng-view></div>
 
@@ -39,6 +39,8 @@
 
     <!-- My App -->
     <script src="scripts/app.js"></script>
+    
+    <script src="scripts/controllers/homeController.js"></script>
     <script src="scripts/controllers/loginController.js"></script>
     <script src="scripts/controllers/registerController.js"></script>
   </body>
