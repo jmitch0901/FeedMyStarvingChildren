@@ -6,9 +6,9 @@ var express = require("express"),
     MainRouter = express.Router({mergeParams:true});
 
 
-MainRouter.get('/',function(req,res){
-   res.sendFile(Path.resolve(__dirname + '/../public/login.html'));
-});
+// MainRouter.get('/',function(req,res){
+//    res.sendFile(Path.resolve(__dirname + '/../public/login.html'));
+// });
 
 
 
