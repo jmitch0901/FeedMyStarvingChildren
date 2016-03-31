@@ -33,7 +33,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 var routes = require("./routes");
-app.use(routes);
+app.use('/api',routes);
 
 //http requests
 var httpListener = app.listen(process.env.PORT || 8080, process.env.IP, function(){

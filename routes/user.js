@@ -61,16 +61,16 @@ UserRouter.post('/user/:id_user/buy',Middleware.isLoggedIn,function(req,res){
 
 //REDIRECTION
 UserRouter.get('/me',Middleware.isLoggedIn,function(req,res){
-  res.redirect('/user/'+req.user._id);
+  res.redirect('user/'+req.user._id);
 });
 
 UserRouter.put('/me',Middleware.isLoggedIn,function(req,res){
-  res.redirect('/user/'+req.user._id);
+  res.redirect('user/'+req.user._id);
 });
 
 //TODO -> BAD ROUTE
 UserRouter.post('/me/buy',Middleware.isLoggedIn,function(req,res){
-  res.redirect('/user/'+req.user._id+'/buy');
+  res.redirect('user/'+req.user._id+'/buy');
 });
 
 

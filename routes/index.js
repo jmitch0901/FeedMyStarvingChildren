@@ -18,7 +18,7 @@ MainRouter.get("/login",function(req,res){
 
 
 
-MainRouter.post('/login',passport.authenticate('local',{failureRedirect:'/login'}),function(req,res){
+MainRouter.post('/login',passport.authenticate('local',{failureRedirect:'/api/login'}),function(req,res){
   console.log(req.user._id + " user id is logged in.");
   res.json({message:"Hello " + req.user.firstname+ ", you are now logged in.",isLoggedIn:req.isAuthenticated()});
 });
