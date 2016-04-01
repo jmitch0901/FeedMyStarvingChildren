@@ -1,12 +1,12 @@
 <div class="photo">
 
   <div align="right">
-    <a class="btn btn-primary btn-lg" href="#/login" class="btn" >Login</a>
+    <a class="btn btn-primary btn-lg" ng-show="!isLoggedIn" href="#/login" class="btn" >Login</a>
 
-    <!-- <span ng-show="isLoggedIn">
-      <button class="btn" ng-click="isLoggedIn = !isLoggedIn">Logout</button>
+    <span ng-show="isLoggedIn">
+      <button class="btn" ng-click="logout()">Logout</button>
       <h3> Hello {{userName}}    </h3>
-    </span> -->
+    </span>
 
     <!-- <a  href="#/login">Login</a> -->
   </div>

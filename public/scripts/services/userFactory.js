@@ -1,10 +1,10 @@
 angular.module('App')
-.factory('UserFactory',function($http){
+.factory('UserFactory',function($http,$cookies){
 
 console.log('Initializing User Factory!');
 
   var user = {
-    me: undefined,
+    me: {},
     isLoggedIn: false,
     login: function(email,password,callbacks){
       var self = this;
@@ -23,14 +23,21 @@ console.log('Initializing User Factory!');
       .success(function(result){
         console.log("SUCCESS")
         console.log(result);
+
+        if(!result.isLoggedIn){
+          return callbacks("Invalid email and password combo.");
+        }
+
+
         $http.get('/api/me')
         .success(function(result){
 
           if(result.error){
             console.log(result.error);
-            callbacks(result.error;)
+            callbacks(result.error);
           } else {
-            self.me = result;
+            self.me = result.me;
+            self.isLoggedIn = true;
             callbacks(null);
 
           }
@@ -44,6 +51,18 @@ console.log('Initializing User Factory!');
         console.log("ERROR");
         console.log(result);
       });
+    },
+    logout: function(callbacks){
+      var self = this;
+      $http.get('/api/logout')
+      .success(function(response){
+        self.isLoggedIn = response.isLoggedIn;
+        console.log(response);
+        callbacks(null);
+      })
+      .error(function(response){
+        callbacks(response);
+      })
     },
     register: function(){
 

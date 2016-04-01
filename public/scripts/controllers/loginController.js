@@ -9,9 +9,19 @@ angular.module('App')
 
   $scope.email = "";
   $scope.password = "";
+  $scope.errorMessage = "";
+
   $scope.login = function(){
+    $scope.errorMessage = "";
     //TODO finish this login method
     UserFactory.login($scope.email,$scope.password,function(err){
+      if(err){
+        $scope.errorMessage = err;
+        console.error(err);
+        return;
+      }
+
+      $location.path('/');
 
     });
   };
