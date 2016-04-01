@@ -36,9 +36,9 @@ var routes = require("./routes");
 app.use('/api',routes);
 
 //http requests
-// var httpListener = app.listen(process.env.PORT || 8080, process.env.IP, function(){
-//    console.log("HTTP Server Started!");
-// });
+var httpListener = app.listen(process.env.PORT || 8080, process.env.IP, function(){
+   console.log("HTTP Server Started!");
+});
 
 //HTTPS
 var certOptions = require('./configs/certs');

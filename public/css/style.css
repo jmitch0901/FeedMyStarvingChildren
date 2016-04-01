@@ -12,10 +12,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.page-header h1{
+  font-size: 6em;
+  font-weight: bold;
+  font-family: 'Merriweather', serif;
+}
+
 
 .login-page {
   width: 360px;
   padding: 8% 0 0;
+}
+
+#about{
+  font-size: 2em;
+    font-family: 'Merriweather', serif;
 }
 
 .form {
