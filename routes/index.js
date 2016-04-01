@@ -26,7 +26,7 @@ MainRouter.post('/login',passport.authenticate('local',{failureRedirect:'/api/lo
 
 
 MainRouter.get('/logout',function(req,res){
-  req.logout();
+  req.logOut();
   res.json({message:"You are now logged out.",isLoggedIn:req.isAuthenticated()})
 });
 

@@ -1,4 +1,4 @@
-angular.module('App',['ngRoute','ngResource','ngAnimate','angularModalService'])
+angular.module('App',['ngRoute','ngResource','ngAnimate','angularModalService','ngCookies'])
 .config(function($routeProvider){
   $routeProvider
     .when('/',{

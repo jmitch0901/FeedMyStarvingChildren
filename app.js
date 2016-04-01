@@ -21,7 +21,10 @@ app.use(express.static(__dirname + '/public'));
 app.use(expressSession({
     secret: "HYYa<qv\\v?faJ8Lr8vc\\",//Change this to enviroment variable later
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie:{
+      maxAge: 60000
+    }
 }));
 
 //Session Setup

@@ -1,10 +1,10 @@
 angular.module('App')
-.controller('HomeCtrl',function($scope,ModalService,UserFactory){
+.controller('HomeCtrl',function($scope,$location,ModalService,UserFactory){
   console.log("Home Controller Loaded");
 
   $scope.isLoggedIn = UserFactory.isLoggedIn;
-
   $scope.userName = UserFactory.me.firstname ? UserFactory.me.firstname : "";
+
   $scope.logout = function(){
     UserFactory.logout(function(err){
       if(err){
@@ -15,6 +15,16 @@ angular.module('App')
 
     });
   };
+
+  UserFactory.makeMeRequest(function(err){
+    if(err){
+      return console.error(err);
+    }
+
+    $scope.userName = UserFactory.me.firstname ? UserFactory.me.firstname : "";
+    $scope.isLoggedIn = UserFactory.isLoggedIn;
+
+  });
 
 
   $(document).ready(function(){
@@ -46,6 +56,12 @@ angular.module('App')
   };
 
   $scope.showBuy = function(){
+
+    if(!UserFactory.isLoggedIn){
+      $location.path('/login');
+      return;
+    }
+
     buyShown = !buyShown;
 
     if(buyShown){

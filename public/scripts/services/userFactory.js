@@ -1,5 +1,5 @@
 angular.module('App')
-.factory('UserFactory',function($http,$cookies){
+.factory('UserFactory',function($http){
 
 console.log('Initializing User Factory!');
 
@@ -28,24 +28,9 @@ console.log('Initializing User Factory!');
           return callbacks("Invalid email and password combo.");
         }
 
+        self.makeMeRequest(callbacks);
 
-        $http.get('/api/me')
-        .success(function(result){
 
-          if(result.error){
-            console.log(result.error);
-            callbacks(result.error);
-          } else {
-            self.me = result.me;
-            self.isLoggedIn = true;
-            callbacks(null);
-
-          }
-
-        })
-        .error(function(result){
-          console.log(result);
-        });
       })
       .error(function(result){
         console.log("ERROR");
@@ -63,6 +48,26 @@ console.log('Initializing User Factory!');
       .error(function(response){
         callbacks(response);
       })
+    },
+    makeMeRequest: function(callbacks){
+      var self = this;
+      $http.get('/api/me')
+      .success(function(result){
+
+        if(result.error){
+          console.log(result.error);
+          callbacks(result.error);
+        } else {
+          self.me = result.me;
+          self.isLoggedIn = true;
+          console.log('Just made me request and u are logged in');
+          callbacks(null);
+        }
+      })
+      .error(function(result){
+        console.log(result);
+        callbacks(result);
+      });
     },
     register: function(){
 
