@@ -1,12 +1,26 @@
-<div class="photo">
+<div class="photo container">
 
-  <div align="right">
+  <div>
     <a class="btn btn-primary btn-lg" ng-show="!isLoggedIn" href="#/login" class="btn" >Login / Register</a>
 
-    <span ng-show="isLoggedIn">
-      <button class="btn" ng-click="logout()">Logout</button>
-      <h3> Hello {{userName}}    </h3>
-    </span>
+    <div ng-show="isLoggedIn">
+
+      <!-- <button class="btn" ng-click="logout()">Logout</button>
+      <h3> Hello {{userName}}    </h3> -->
+      <div class="dropdown" align="right">
+        <button style="whitespace:normal;" class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Welcome, {{userName}}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+    </div>
 
     <!-- <a  href="#/login">Login</a> -->
   </div>
