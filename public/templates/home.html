@@ -1,14 +1,14 @@
-<div class="photo container">
+<div class="photo">
 
-  <div>
-    <a class="btn btn-primary btn-lg" ng-show="!isLoggedIn" href="#/login" class="btn" >Login / Register</a>
+  <div >
+    <a  class="btn btn-primary btn-lg" ng-show="!isLoggedIn" href="#/login" class="btn" >Login / Register</a>
 
     <div ng-show="isLoggedIn">
 
       <!-- <button class="btn" ng-click="logout()">Logout</button>
       <h3> Hello {{userName}}    </h3> -->
-      <div class="dropdown" align="right">
-        <button style="whitespace:normal;" class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <div class="dropdown" >
+        <button style="whitespace:normal;" class="btn btn-default btn-lg dropdown-toggle dropdown-toggle-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Welcome, {{userName}}
           <span class="caret"></span>
         </button>
