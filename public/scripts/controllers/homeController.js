@@ -1,6 +1,37 @@
 angular.module('App')
-.controller('HomeCtrl',function($scope,$location,ModalService,UserFactory){
+.controller('HomeCtrl',function($scope,$location,ModalService,UserFactory,ImageDataFactory){
   console.log("Home Controller Loaded");
+
+  $scope.messageName = "LOADING...";
+  $scope.message = "LOADING...";
+  ImageDataFactory.initialize();
+  $('#releasable-image').mousemove(function(e){
+    //console.log(e.offsetX + ", " + e.offsetY);
+
+    var data = ImageDataFactory.getMetaData(e.offsetX,e.offsetY);
+    //console.log(data);
+    if(!data){
+      $('#image-tooltip').popover('hide');
+      return;
+    }
+
+    //console.log(data);
+    var firstname = data.buyer.id.firstname;
+    var message =  data.message;
+
+    //console.log(e);
+  //  console.log($('#image-tooltip'));
+
+    $('#image-tooltip')
+    .css({"position":"absolute","top":e.pageY - 25 + "px","left": e.offsetX + 125+"px"})
+    .popover('show').popover({
+      title:"HELLO!"
+    })
+    //$('[data-toggle="popover"]').attr('title',message + " -"+firstname);
+  });
+
+
+
 
   $scope.isLoggedIn = UserFactory.isLoggedIn;
   $scope.userName = UserFactory.me.firstname ? UserFactory.me.firstname : "";

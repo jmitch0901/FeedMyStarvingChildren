@@ -27,6 +27,7 @@
     "bootstrap": "^3.3.6",
     "angular-resource": "^1.5.3",
     "socket.io": "^1.4.5",
-    "angular-modal-service": "^0.9.10"
+    "angular-modal-service": "^0.9.10",
+    "underscore": "^1.8.3"
   }
 }

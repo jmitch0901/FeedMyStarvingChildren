@@ -61,7 +61,7 @@ module.exports = {
         }
 
         pixelObjs.forEach(function(pix){
-          pix.buyer.id = Mongoose.Types.ObjectId();
+          pix.buyer.id = Mongoose.Types.ObjectId(userID);
           pix.message = message;
           pix.isBought = true;
           pix.save(function(err){

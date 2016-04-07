@@ -50,11 +50,13 @@ UserRouter.put('/user/:id_user',function(req,res){
 //TODO
 UserRouter.post('/user/:id_user/buy',Middleware.isLoggedIn,function(req,res){
 
-  PixelHandler.buyPixels('100','suh dude',10000,function(err){
+  PixelHandler.buyPixels(req.user.id,'suh dude',10000,function(err){
       if(err){
           console.log(err);
+          res.json({error:err});
+          return;
       }
-      res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.jpg'));
+      res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.png'));
   });
 });
 

@@ -5,9 +5,9 @@ var express = require('express'),
 
 PixelRouter.get('/',function(req,res){
 
-  PixelSchema.find({})
+  PixelSchema.find({isBought:true})
+  .populate('buyer.id')
   .lean()
-  .stream()
   .exec(function(err,result){
     //console.log(result);
     if(err){
@@ -15,6 +15,8 @@ PixelRouter.get('/',function(req,res){
       //res.json({error:err});
       return;
     }
+    res.json(result);
+    //console.log(result);
   //  res.json(result);
   });
 
