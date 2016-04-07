@@ -41,7 +41,7 @@ MainRouter.use(UserRoute);
 MainRouter.get("/img",function(req,res){
 
     console.log("Hitting /img");
-    res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.jpg'));
+    res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.png'));
 });
 
 

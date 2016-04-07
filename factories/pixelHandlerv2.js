@@ -6,12 +6,12 @@ var Mongoose = require("mongoose"),
 
 function reloadImage(callbacks){
 
-     Jimp.read(__dirname+"/../img/secret-image.jpg")
+     Jimp.read(__dirname+"/../img/secret-image.png")
     .then(function(secretPic){
 
         console.log("Reading secret image!");
 
-        Jimp.read(__dirname+"/../img/releasable-image.jpg")
+        Jimp.read(__dirname+"/../img/releasable-image.png")
         .then(function(releasedPic){
 
             console.log("Writing to Releasable image!");
@@ -32,7 +32,7 @@ function reloadImage(callbacks){
               })
               .on('close',function(){
                 console.log('done with Mongo init.');
-                releasedPic.write(__dirname+"/../img/releasable-image.jpg",function(){
+                releasedPic.write(__dirname+"/../img/releasable-image.png",function(){
                 console.log("done writing new image after bought pixels!");
                 if(callbacks){
                   callbacks();
