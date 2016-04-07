@@ -34,6 +34,8 @@ MainRouter.get('/logout',function(req,res){
 //Require more routes
 var UserRoute = require("./user");
 MainRouter.use(UserRoute);
+var PixelsRoute = require('./pixels');
+MainRouter.use('/pixels',PixelsRoute);
 
 
 
