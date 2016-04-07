@@ -34,6 +34,8 @@ MainRouter.get('/logout',function(req,res){
 //Require more routes
 var UserRoute = require("./user");
 MainRouter.use(UserRoute);
+var PixelsRoute = require('./pixels');
+MainRouter.use('/pixels',PixelsRoute);
 
 
 
@@ -41,7 +43,7 @@ MainRouter.use(UserRoute);
 MainRouter.get("/img",function(req,res){
 
     console.log("Hitting /img");
-    res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.jpg'));
+    res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.png'));
 });
 
 
