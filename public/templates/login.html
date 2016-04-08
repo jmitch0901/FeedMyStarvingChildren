@@ -1,12 +1,14 @@
 
-<div style="margin-top:26px; padding:26px;" class="login_page">
+<div ng-animate="'animate'" style="margin-top:26px; padding:26px;" class="login_page">
 
 	<div ng-show="errorMessage.length > 0" class="alert alert-danger">
   	<p>{{errorMessage}}<p>
 	</div>
 
 	<div class="form">
+
 		<div class="loginForm">
+
 			<div class="thumbnail">
 				<img src="img/FMSClogo.png"><p>
 			</div>
@@ -14,8 +16,14 @@
 		        Email:<br><input id="emailID" type="text" ng-model="email" required><br>
 		        Password:<br><input id="passwordID" type="password" ng-model="password" required><br>
 				<button class="btn btn-lg btn-primary btn-block" ng-click="login()">Login</button><br><br>
+
 				Not yet a member?<br>
-				Click <a href="#/register">here</a> to sign up.</br>
+				Click <a ui-sref="register">here</a> to sign up.</br>
+
 		</div>
+		<button ui-sref="home" style="margin:6px;display:block;margin-top:12px" type="button" class="btn btn-default btn-large" aria-label="Left Align">
+			 <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back to Home Page
+		</button>
 	</div>
 </div>

@@ -1,10 +1,9 @@
-<div class="photo">
+<div ng-animate="'animate'" class="photo">
 
   <div class="page-header">
       <div class="well">
         <h1>Feed My Starving Pixels!</h1>
       </div>
-
   </div>
 
   <div class="thumnail jumbotron">
@@ -21,7 +20,7 @@
 
   <button class="btn btn-lg btn-primary" ng-click="showAbout()">About</button>
   <button class="btn btn-lg btn-primary" ng-click="showBuy()">Buy Pixels</button><p>
-    <div style="display:inline; margin-botton:10px;"><a class="btn btn-primary btn-lg" ng-show="!isLoggedIn" href="#/login" >Login / Register</a></div>
+    <div style="display:inline; margin-botton:10px;"><a class="btn btn-primary btn-lg" ng-show="!isLoggedIn" ui-sref="login" >Login / Register</a></div>
     <div style="display:inline; margin-bottom:10px;" ng-show="isLoggedIn" class="dropdown" >
       <button style="white-space:normal;" class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Welcome, {{userName}}
@@ -44,9 +43,6 @@
       <buy-slide></buy-slide>
     </div>
   </div>
-
-
-
 
 
   <a id="image-tooltip" data-placement="right" title="LOADING..." data-toggle="popover"></a>
