@@ -1,22 +1,36 @@
 <div ng-animate="register" style="margin-top:26px; padding:26px;" class="login_page">
+
+
+
 	<div class="form">
 		<form name="loginForm">
 			<div class="thumbnail">
 				<img src="img/FMSClogo.png">
 			</div>
 			<h2>Welcome! Please sign up.</h2>
-				First Name:<br><input id="firstNameID" type="text"><br>
-				Last Name:<br><input id="lastNameID" type="text"><br>
-				Email:<br><input id="emailID" type="text"><br>
-		        Password:<br><input id="passwordID" type="password"><br>
-				Confirm Password:<br><input id="confirmPasswordID" type="password"><br>
-				<button class="btn btn-lg btn-primary btn-block">Sign Up</button><br><br>
+				First Name:<br>
+				<input id="firstNameID" type="text" ng-model="user.firstname"><br>
+				Last Name:<br>
+				<input id="lastNameID" type="text" ng-model="user.lastname"><br>
+				Email:<br>
+				<input id="emailID" type="text" ng-model="user.email"><br>
+		        Password:<br><input id="passwordID" type="password" ng-model="user.password"><br>
+				Confirm Password:<br>
+				<input  id="confirmPasswordID" type="password" ng-model="user.confirmPassword"><br>
+
+				<div ng-show="errorMessage.length > 0" class="alert alert-danger">
+					<p>{{errorMessage}}<p>
+				</div>
+				<button ng-click="doRegister()" class="btn btn-lg btn-primary btn-block">Sign Up</button><br><br>
+
 				Already a member?<br>
 				Click <a ui-sref="login">here</a> to login.</br>
 		</form>
+
 		<button ui-sref="home" style="margin:6px;display:block;margin-top:12px" type="button" class="btn btn-default btn-large" aria-label="Left Align">
-			 <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
 			<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back to Home Page
 		</button>
 	</div>
+
 </div>

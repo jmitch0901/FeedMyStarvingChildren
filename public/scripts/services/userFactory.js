@@ -69,7 +69,20 @@ console.log('Initializing User Factory!');
         callbacks(result);
       });
     },
-    register: function(){
+    register: function(potentialUser,callbacks){
+
+      $http.post('/api/user',potentialUser,{headers:{'Content-Type':'application/json'}})
+      .then(function(err,result){
+        if(err){
+          console.error(err);
+          return callbacks(err);
+        }
+
+        console.log(result);
+        callbacks(null,result);
+
+      });
+
 
     }
   };

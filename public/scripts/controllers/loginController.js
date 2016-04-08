@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('LoginCtrl',function($scope,$location,$window,UserFactory){
+.controller('LoginCtrl',function($scope,$state,UserFactory){
   console.log("Login Controller Added");
   // if ($location.protocol() !== 'https') {
   //   console.log('You are NOT going over https when you should!');
@@ -12,7 +12,7 @@ angular.module('App')
   $scope.errorMessage = "";
 
   $scope.login = function(){
-    $scope.errorMessage = "";
+
     //TODO finish this login method
     UserFactory.login($scope.email,$scope.password,function(err){
       if(err){
@@ -21,7 +21,7 @@ angular.module('App')
         return;
       }
 
-      $location.path('/');
+      $state.go('home');
 
     });
   };
