@@ -32,9 +32,11 @@ var Middleware = {
     }
     console.log(req.body);
     var potentialUser = req.body.user;
+    // console.log(req.body);
 
     if(!potentialUser || !potentialUser.firstname || !potentialUser.lastname || !potentialUser.email || !potentialUser.password){
       res.status(400);
+      console.log("Didnt send me good params!");
       return res.json({error:"Bad POST parameters while registering."});
     }
 

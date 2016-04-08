@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('RegisterCtrl',function($scope,UserFactory){
+.controller('RegisterCtrl',function($scope,$state,UserFactory){
   console.log("Register Controller Added");
 
   $scope.errorMessage = "";
@@ -11,10 +11,16 @@ angular.module('App')
     confirmPassword:""
   };
 
+  $('#register-success-modal').on('hidden.bs.modal',function(){
+    console.log("modal is hidden!");
+    $state.go('home');
+  });
+
   $scope.doRegister = function(){
     console.log("Signing up!");
-
+    $scope.errorMessage = "";
     if(
+
       $scope.user.firstname.length === 0 ||
       $scope.user.lastname.length === 0 ||
       $scope.user.email.length === 0 ||
@@ -36,10 +42,18 @@ angular.module('App')
     UserFactory.register($scope.user,function(err,result){
       if(err){
         console.log(err);
+        $scope.errorMessage = err.error;
         return;
       }
 
       console.log(result);
+      UserFactory.login($scope.user.email,$scope.user.password,function(err){
+        if(err){
+          console.error("I just registered you, and I couldn't log you in!");
+          console.log(err);
+        }
+      });
+      $('#register-success-modal').modal('show');
     });
   };
 });

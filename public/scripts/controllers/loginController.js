@@ -13,6 +13,8 @@ angular.module('App')
 
   $scope.login = function(){
 
+    $scope.errorMessage = "";
+
     //TODO finish this login method
     UserFactory.login($scope.email,$scope.password,function(err){
       if(err){
