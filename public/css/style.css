@@ -54,7 +54,7 @@ body {
   font-size: 14px;
 }
 
-.form button {
+/*.form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -67,11 +67,11 @@ body {
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
-}
+}*/
 
-.form button:hover,.form button:active,.form button:focus {
+/*.form button:hover,.form button:active,.form button:focus {
   background: #4e80a7;
-}
+}*/
 
 .photo {
   position: relative;
@@ -86,7 +86,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.photo button{
+/*.photo button{
 
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -100,11 +100,11 @@ body {
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
-}
+}*/
 
-.photo button:hover,.form button:active,.form button:focus {
+/*.photo button:hover,.form button:active,.form button:focus {
   background: #4e80a7;
-}
+}*/
 
 #releasable-image{
   border:1px solid black;

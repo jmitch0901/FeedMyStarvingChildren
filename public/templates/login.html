@@ -1,16 +1,19 @@
 
-<div class="login_page">
+<div style="margin-top:26px; padding:26px;" class="login_page">
 
 	<div ng-show="errorMessage.length > 0" class="alert alert-danger">
   	<p>{{errorMessage}}<p>
 	</div>
+
 	<div class="form">
 		<div class="loginForm">
-			<img src="img/FMSClogo.png"><p>
+			<div class="thumbnail">
+				<img src="img/FMSClogo.png"><p>
+			</div>
 			<h2>Welcome! Please login.</h2>
 		        Email:<br><input id="emailID" type="text" ng-model="email" required><br>
 		        Password:<br><input id="passwordID" type="password" ng-model="password" required><br>
-				<button ng-click="login()">login</button><br><br>
+				<button class="btn btn-lg btn-primary btn-block" ng-click="login()">Login</button><br><br>
 				Not yet a member?<br>
 				Click <a href="#/register">here</a> to sign up.</br>
 		</div>

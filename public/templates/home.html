@@ -1,30 +1,5 @@
 <div class="photo">
 
-  <div >
-    <a  class="btn btn-primary btn-lg" ng-show="!isLoggedIn" href="#/login" class="btn" >Login / Register</a>
-
-    <div ng-show="isLoggedIn">
-
-      <!-- <button class="btn" ng-click="logout()">Logout</button>
-      <h3> Hello {{userName}}    </h3> -->
-      <div class="dropdown" >
-        <button style="whitespace:normal;" class="btn btn-default btn-lg dropdown-toggle dropdown-toggle-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Welcome, {{userName}}
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- <a  href="#/login">Login</a> -->
-  </div>
-
   <div class="page-header">
       <div class="well">
         <h1>Feed My Starving Pixels!</h1>
@@ -32,30 +7,44 @@
 
   </div>
 
-  <img src="img/FMSClogo.png" style="width:298px;height:142px;"><br />
+  <div class="thumnail jumbotron">
+    <img src="img/FMSClogo.png" style="width:298px;height:142px;"><br />
+  </div>
   <p></p>
-  <!-- <dialog id="about">
-  Feed My Starving Children (FMSC), is a non-profit organization whose vision is to eliminate starvation in children throughout the world. Their approach is to have volunteers hand-pack meals specially formulated for malnourished children, and send them to partners around the world where they're used to operate orphanages, schools, clinics, and feeding programs to break the cycle of poverty. FMSC food has reached more than 70 countries. FMSC experienced an average annual growth rate of 48% in the past decade. FMSC meals costs only 22 cents each, and 92% of total donations go directly on meal production.<p>
-  <b>If you would like to donate, click on the "buy pixels" button. Each pixel is 22 cents, the cost of one meal. Each pixel that is bought will reveal more of the secret photo!<br></b>
-  <sub>*All proceeds will go to Feed My Starving Children.</sub><p>
-  <a href="">Close</a></p>
-  </dialog>
-  <dialog id="buyPixels">
-  Sign in with<br><a href="http://www.paypal.com"><img src="img/paypal.png" style="width:100px;height:25.5px;"></a>
-  <p><a href="">Close</a></p>
-  </dialog> -->
 
   <!-- TODO  add my onClick rules-->
-  <button ng-click="showAbout()">About</button>
-  <button ng-click="showBuy()">Buy Pixels</button><p>
 
-  <div id="about-slider">
-    <about-slide></about-slide>
+
+
+    <!-- <button class="btn" ng-click="logout()">Logout</button>
+    <h3> Hello {{userName}}    </h3> -->
+
+  <button class="btn btn-lg btn-primary" ng-click="showAbout()">About</button>
+  <button class="btn btn-lg btn-primary" ng-click="showBuy()">Buy Pixels</button><p>
+    <div style="display:inline; margin-botton:10px;"><a class="btn btn-primary btn-lg" ng-show="!isLoggedIn" href="#/login" >Login / Register</a></div>
+    <div style="display:inline; margin-bottom:10px;" ng-show="isLoggedIn" class="dropdown" >
+      <button style="white-space:normal;" class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Welcome, {{userName}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#">Edit Account</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a ng-click="logout()">Logout</a></li>
+      </ul>
+    </div>
+
+
+  <div style="margin-top:10px;">
+    <div id="about-slider">
+      <about-slide></about-slide>
+    </div>
+
+    <div id="buy-slider">
+      <buy-slide></buy-slide>
+    </div>
   </div>
 
-  <div id="buy-slider">
-    <buy-slide></buy-slide>
-  </div>
 
 
 

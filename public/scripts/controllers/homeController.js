@@ -2,8 +2,6 @@ angular.module('App')
 .controller('HomeCtrl',function($scope,$location,ModalService,UserFactory,ImageDataFactory){
   console.log("Home Controller Loaded");
 
-  $scope.messageName = "LOADING...";
-  $scope.message = "LOADING...";
   ImageDataFactory.initialize();
   $('#releasable-image').mousemove(function(e){
     //console.log(e.offsetX + ", " + e.offsetY);
@@ -23,12 +21,17 @@ angular.module('App')
   //  console.log($('#image-tooltip'));
 
     $('#image-tooltip')
+    .attr('data-original-title', firstname + " said:")
+    .attr('data-content', message)
     .css({"position":"absolute","top":e.pageY - 25 + "px","left": e.offsetX + 125+"px"})
-    .popover('show').popover({
-      title:"HELLO!"
-    })
+    //.popover({trigger: 'manual'})
+    .popover('show');
     //$('[data-toggle="popover"]').attr('title',message + " -"+firstname);
   });
+
+  // $('#releasable-image').mouseleave(function(){
+  //   $('#image-tooltip').popover('hide');
+  // });
 
 
 
