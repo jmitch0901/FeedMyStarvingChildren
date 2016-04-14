@@ -48,7 +48,12 @@ UserRouter.put('/user/:id_user',function(req,res){
 
 
 //TODO
-UserRouter.post('/user/:id_user/buy',Middleware.isLoggedIn,function(req,res){
+UserRouter.post('/user/:id_user/buy',
+  Middleware.isLoggedIn,
+  Middleware.validateBuyPixels,
+  Middleware.filterProfanity,
+  function(req,res){
+
 
   PixelHandler.buyPixels(req.user.id,'suh dude',10000,function(err){
       if(err){
@@ -71,9 +76,9 @@ UserRouter.put('/me',Middleware.isLoggedIn,function(req,res){
 });
 
 //TODO -> BAD ROUTE
-UserRouter.post('/me/buy',Middleware.isLoggedIn,function(req,res){
-  res.redirect('user/'+req.user._id+'/buy');
-});
+// UserRouter.post('/me/buy',Middleware.isLoggedIn,function(req,res){
+//   res.redirect('user/'+req.user._id+'/buy');
+// });
 
 
 module.exports = UserRouter;

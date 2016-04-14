@@ -54,8 +54,38 @@ var Middleware = {
       next();
     });
   },
-  checkValidBuyParams: function(req,res,next){
+  validateBuyPixels: function(req,res,next){
+    var amount = req.body.amount,
+        card = req.body.card;
 
+    if(!card){
+      return res.json(400,{success: false, error:'You must provide a credit card.'});
+    }
+
+    if(!amount || isNaN(amount) || Number(amount) < 10){
+      return res.json(400,{success:false, error: 'You must provide a pixel (number) amount of either 10 or greater.'});
+    }
+
+    var cardNum = card.number,
+        cardExp = card.expires,
+        cardCVV = card.cvv;
+
+    //Don't forget the billing address.
+
+
+
+
+
+
+
+
+
+  },
+  filterProfanity: function(req,res,next){
+    if(!req.body.message){
+      req.body.message = "Thanks for donating :)";
+      return next();
+    }
   }
 };
 
