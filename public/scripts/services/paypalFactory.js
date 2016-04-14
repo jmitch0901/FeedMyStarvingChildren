@@ -1,6 +1,6 @@
 angular.module('App')
-.factory('PaypalFactory',function($http){
+.factory('PaypalFactory',['$http',function($http){
   return {
 
   };
-});
+}]);

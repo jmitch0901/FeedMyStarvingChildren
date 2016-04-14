@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('LoginCtrl',function($scope,$state,UserFactory){
+.controller('LoginCtrl',['$scope','$state','UserFactory',function($scope,$state,UserFactory){
   console.log("Login Controller Added");
   // if ($location.protocol() !== 'https') {
   //   console.log('You are NOT going over https when you should!');
@@ -31,4 +31,4 @@ angular.module('App')
 
 
 
-});
+}]);

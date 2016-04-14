@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('HomeCtrl',function($scope,$location,UserFactory,ImageDataFactory){
+.controller('HomeCtrl',['$scope','$location','UserFactory','ImageDataFactory',function($scope,$location,UserFactory,ImageDataFactory){
   console.log("Home Controller Loaded");
 
   ImageDataFactory.initialize();
@@ -113,4 +113,4 @@ angular.module('App')
 
   };
 
-});
+}]);

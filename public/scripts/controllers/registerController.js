@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('RegisterCtrl',function($scope,$state,UserFactory){
+.controller('RegisterCtrl',['$scope','$state','UserFactory',function($scope,$state,UserFactory){
   console.log("Register Controller Added");
 
   $scope.errorMessage = "";
@@ -56,4 +56,4 @@ angular.module('App')
       $('#register-success-modal').modal('show');
     });
   };
-});
+}]);

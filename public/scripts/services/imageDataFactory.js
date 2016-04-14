@@ -1,5 +1,5 @@
 angular.module('App')
-.factory('ImageDataFactory',function($http){
+.factory('ImageDataFactory',['$http',function($http){
 
   var self = {
     pixelInfo:null, //Array of our pixel meta-data
@@ -40,4 +40,4 @@ angular.module('App')
 
   return self;
 
-});
+}]);

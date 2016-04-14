@@ -1,5 +1,5 @@
 angular.module('App')
-.factory('UserFactory',function($http){
+.factory('UserFactory',['$http',function($http){
 
 console.log('Initializing User Factory!');
 
@@ -85,4 +85,4 @@ console.log('Initializing User Factory!');
   };
 
   return user;
-});
+}]);
