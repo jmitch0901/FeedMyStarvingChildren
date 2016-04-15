@@ -51,17 +51,18 @@ UserRouter.put('/user/:id_user',function(req,res){
 UserRouter.post('/user/:id_user/buy',
   Middleware.isLoggedIn,
   Middleware.validateBuyPixels,
-  Middleware.filterProfanity,
+  Middleware.filterProfanity, //TODO
   function(req,res){
 
 
-  PixelHandler.buyPixels(req.user.id,'suh dude',10000,function(err){
+  PixelHandler.buyPixels(req.user.id,req.body.message,req.body.amount,function(err){
       if(err){
           console.log(err);
           res.json({error:err});
           return;
       }
-      res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.png'));
+      res.json({success:true,message:'You have successfully purchased ' + req.body.amount + ' pixels! Thank you!'});
+      //res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.png'));
   });
 });
 

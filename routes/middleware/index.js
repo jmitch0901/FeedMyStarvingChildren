@@ -70,6 +70,20 @@ var Middleware = {
         cardExp = card.expires,
         cardCVV = card.cvv;
 
+    if(isNaN(cardNum)){
+      return res.json(400,{success:false,error:'You must provide a valid card number.'});
+    }
+
+    if(!cardExp){
+      return res.json(400,{success:false,error:'You must provide a valid card expiration date.'});
+    }
+
+    if(!cardCVV){
+      return res.json(400,{success:false,error:'You must provide a valid CVV code.'});
+    }
+
+    next();
+
     //Don't forget the billing address.
 
 
@@ -86,6 +100,8 @@ var Middleware = {
       req.body.message = "Thanks for donating :)";
       return next();
     }
+    next();
+
   }
 };
 
