@@ -13,7 +13,7 @@ body {
 }
 
 .page-header h1{
-  font-size: 5em;
+  font-size: 4.5em;
   font-weight: bold;
   font-family: 'Merriweather', serif;
 }
@@ -52,6 +52,13 @@ body {
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+}
+
+#buyPixels legend{
+  font-weight: bold;
+  font-family: 'Merriweather', serif;
+  color: #236192;
+  font-size: 21pt;
 }
 
 /*.form button {
