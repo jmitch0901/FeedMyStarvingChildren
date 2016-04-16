@@ -66,16 +66,28 @@ var Middleware = {
       return res.json(400,{success:false, error: 'You must provide a pixel (number) amount of either 10 or greater.'});
     }
 
-    var cardNum = card.number,
-        cardExp = card.expires,
+    req.body.amount = Number(req.body.amount);
+
+    var cardName = card.name,
+        cardNum = card.number,
+        cardMonth = card.month,
+        cardYear = card.year,
         cardCVV = card.cvv;
 
-    if(isNaN(cardNum)){
+    if(!cardName){
+      return res.json(400,{success:false,error:'You must provide the name lisited on your credit card.'});
+    }
+
+    if(!cardNum || isNaN(cardNum)){
       return res.json(400,{success:false,error:'You must provide a valid card number.'});
     }
 
-    if(!cardExp){
-      return res.json(400,{success:false,error:'You must provide a valid card expiration date.'});
+    if(!cardMonth){
+      return res.json(400,{success:false,error:'You must provide a valid card expiration month.'});
+    }
+
+    if(!cardYear){
+      return res.json(400,{success:false,error:'You must provide a valid card expiration year.'});
     }
 
     if(!cardCVV){
@@ -83,17 +95,6 @@ var Middleware = {
     }
 
     next();
-
-    //Don't forget the billing address.
-
-
-
-
-
-
-
-
-
   },
   filterProfanity: function(req,res,next){
     if(!req.body.message){

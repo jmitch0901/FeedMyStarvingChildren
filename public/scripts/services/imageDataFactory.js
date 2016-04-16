@@ -25,7 +25,7 @@ angular.module('App')
         });
 
         self.pixelInfo = map;
-        //console.log(self.pixelInfo);
+      
       });
     },
     getMetaData: function(x,y){
@@ -36,6 +36,7 @@ angular.module('App')
       //console.log(self.pixelInfo);
       return self.pixelInfo[Number(x)][Number(y)];
     }
+
   };
 
   return self;

@@ -2,6 +2,7 @@ angular.module('App')
 .directive('buySlide',[function(){
   return {
     templateUrl: '../../templates/buy.html',
-    restrict: 'E'
+    restrict: 'E',
+    controller: 'BuyCtrl'
   };
 }]);
