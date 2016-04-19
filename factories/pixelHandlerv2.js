@@ -4,7 +4,7 @@ var Mongoose = require("mongoose"),
 
 
 
-function reloadImage(callbacks){
+function reloadImage(params,callbacks){
 
      Jimp.read(__dirname+"/../img/secret-image.png")
     .then(function(secretPic){
@@ -16,7 +16,7 @@ function reloadImage(callbacks){
 
             console.log("Writing to Releasable image!");
 
-            PixelSchema.find({})
+            PixelSchema.find(params)
               .lean()
               .stream()
               .on('data',function(pixelObj){
@@ -46,7 +46,7 @@ function reloadImage(callbacks){
 
 module.exports = {
   init: function(){
-    reloadImage();
+    reloadImage({});
   },
   buyPixels: function(userID,message,amount,callbacks){
 
@@ -72,7 +72,7 @@ module.exports = {
          });
 
       console.log("Done altering bought values in DB.");
-      reloadImage(callbacks);
+      reloadImage({isBought:true},callbacks);
     });
   }
 };
