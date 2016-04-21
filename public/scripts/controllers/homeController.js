@@ -46,7 +46,8 @@ angular.module('App')
       }
 
       $scope.isLoggedIn = UserFactory.isLoggedIn;
-
+      //$scope.showBuy();
+      $('#buy-slider').slideUp("fast");
     });
   };
 

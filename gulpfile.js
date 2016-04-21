@@ -51,7 +51,7 @@ Gulp.task('browser-sync',['nodemon'],function(){
   });
 });
 
-Gulp.task('nodemon',function(cb){
+Gulp.task('nodemon',['scripts','styles','html'],function(cb){
   var started = false;
   return Nodemon({
     script: 'app.js',
@@ -59,7 +59,8 @@ Gulp.task('nodemon',function(cb){
       'gulpfile.js',
       'node_modules/',
       'public/**/*',
-      '.git/'
+      '.git/',
+      '.gitignore'
     ]
   })
   .on('start',function(){
@@ -94,7 +95,7 @@ Gulp.task('html',['scripts'],function(){
   .pipe(BrowserSync.reload({stream:true}));
 });
 
-Gulp.task('watch',function(){
+Gulp.task('watch',['scripts','styles','html'],function(){
   Gulp.watch('public/**/*.html',['html']);
   Gulp.watch('public/css/*.css',['styles']);
   Gulp.watch('public/**/*.js',['scripts']);
