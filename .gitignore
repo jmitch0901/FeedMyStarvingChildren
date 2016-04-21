@@ -4,5 +4,6 @@ certs
 certs/
 dist
 dist/
+public/bower_components/
 .DS_Store
 .DS_Store~
