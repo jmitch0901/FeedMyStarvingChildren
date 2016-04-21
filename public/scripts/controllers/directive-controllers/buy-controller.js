@@ -9,9 +9,10 @@ angular.module('App')
     cvv: ''
   };
 
+  $scope.message = '';
   $scope.amount = 10;
   $scope.buy = function(){
-    PaypalFactory.buy($scope.card,$scope.amount,function(){
+    PaypalFactory.buy($scope.card,$scope.amount,$scope.message,function(){
       console.log('Done purchasing!');
     });
   };
