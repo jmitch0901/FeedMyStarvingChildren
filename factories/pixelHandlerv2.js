@@ -3,6 +3,23 @@ var Mongoose = require("mongoose"),
     Jimp = require('jimp');
 
 
+var queue = [];
+
+function initializeInterval(){
+
+
+  setInterval(function(){
+    console.log("Interval Set for 30000 ms");
+
+
+
+
+  },300);
+
+
+
+};
+
 
 function reloadImage(params,callbacks){
 
@@ -15,6 +32,7 @@ function reloadImage(params,callbacks){
         .then(function(releasedPic){
 
             console.log("Writing to Releasable image!");
+
 
             PixelSchema.find(params)
               .lean()
@@ -31,12 +49,13 @@ function reloadImage(params,callbacks){
                 console.log(err);
               })
               .on('close',function(){
-                console.log('done with Mongo init.');
-                releasedPic.write(__dirname+"/../img/releasable-image.png",function(){
-                console.log("done writing new image after bought pixels!");
-                if(callbacks){
-                  callbacks();
-                }
+                console.log('Done streaming the pixel data!');
+
+                releasedPic.resize(1000,1000).quality(100).write(__dirname+"/../img/releasable-image.png",function(){
+                  console.log("done writing new image after bought pixels!");
+                  if(callbacks){
+                    callbacks();
+                  }
               });
             });
         });
@@ -47,6 +66,7 @@ function reloadImage(params,callbacks){
 module.exports = {
   init: function(){
     reloadImage({});
+    initializeInterval();
   },
   buyPixels: function(userID,message,amount,callbacks){
 
@@ -71,7 +91,7 @@ module.exports = {
           });
          });
 
-      console.log("Done altering bought values in DB.");
+      console.log("Done buying " + amount + " random pixels.");
       reloadImage({isBought:true},callbacks);
     });
   }
