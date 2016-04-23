@@ -45,22 +45,11 @@ PixelRouter.get('/',function(req,res){
 
     return res.json({success:true,pixelInfo:result});
   });
+});
 
+PixelRouter.get('/percentage',function(req,res){
 
-
-  // .on('data',function(pixel){
-  //
-  // })
-  // .on('error',function(err){
-  //   console.error('There was an error streaming the pixel meta-data');
-  //   console.error(err);
-  //   return;
-  // })
-  // .on('close',function(){
-  //   console.log('Sending Pixel Metadata');
-  //   res.json([]);
-  //   return;
-  // });
+  res.json({percentage: PixelHandler.getPurchasePercent()});
 
 });
 

@@ -5,8 +5,21 @@ angular.module('App')
 
   var self = {
 
-    getPixelInfo: function(x,y,callbacks){
+    getPixelPercentage: function(callbacks){
+      $http.get('/api/pixels/percentage')
+      .then(function(result){
 
+        callbacks(result.data.percentage);
+
+      }, function(err){
+
+
+      });
+
+
+    },
+
+    getPixelInfo: function(x,y,callbacks){
       $http.get('/api/pixels',{
         params:{
           'x':x,
@@ -22,8 +35,6 @@ angular.module('App')
         console.error(err);
         callbacks(err);
       });
-
-
     }
 
   };

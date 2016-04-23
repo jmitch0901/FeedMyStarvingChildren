@@ -99,7 +99,7 @@ var PixelHandler = {
   },
 
   getPurchasePercent: function(){
-    return new Number(percentage);
+    return percentage * 100;
   },
 
   buyPixels: function(userID,message,amount,callbacks){

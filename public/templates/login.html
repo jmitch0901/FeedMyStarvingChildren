@@ -3,6 +3,7 @@
 
 
 
+<form ng-enter="login()">
 	<div class="form">
 
 		<div class="loginForm">
@@ -11,7 +12,7 @@
 				<img src="img/FMSClogo.png"><p>
 			</div>
 			<h2>Welcome! Please login.</h2>
-		        Email:<br><input id="emailID" type="text" ng-model="email" required><br>
+		        Email:<br><input id="emailID" type="email" ng-model="email" required><br>
 		        Password:<br><input id="passwordID" type="password" ng-model="password" required><br>
 
 						<div ng-show="errorMessage.length > 0" class="alert alert-danger">
@@ -28,4 +29,6 @@
 			<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back to Home Page
 		</button>
 	</div>
+
+</form>
 </div>
