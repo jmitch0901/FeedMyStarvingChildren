@@ -1,4 +1,29 @@
+<div id="buy-success-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title"><strong>(TEST) {{isSuccess ? "Successful Purcase!" : "Unsuccessful Purchase"}} (TEST)</strong></h2>
+      </div>
+      <div class="modal-body">
+        <div class="alert">
+          <p>
+            <strong>{{resultMessage}}</strong><br>
+            *feedmystarvingpixels.com is in beta mode, and has NOT conducted a real purchase.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-primary btn-block" data-dismiss="modal">{{isSuccess ? "Awesome!" : "Got It."}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div id="home" class="photo">
+
+
 
   <div class="page-header">
       <div style="margin:0; padding:16px;" class="well">
