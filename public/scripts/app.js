@@ -2,6 +2,7 @@ angular.module('App',['ngRoute','ngResource','ngAnimate','ngCookies','ui.router'
 .config(['$routeProvider','$stateProvider', '$urlRouterProvider',function($routeProvider,$stateProvider, $urlRouterProvider){
 
 
+
   $stateProvider
   .state('home',{
     url:'/',
@@ -19,6 +20,8 @@ angular.module('App',['ngRoute','ngResource','ngAnimate','ngCookies','ui.router'
     controller:'RegisterCtrl'
   })
   ;
+
+
   $urlRouterProvider.otherwise('/');
 
 }]);

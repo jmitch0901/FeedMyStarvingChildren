@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('BuyCtrl',['$scope','$http','ImageDataFactory','PaypalFactory',function($scope,$http,ImageDataFactory,PaypalFactory){
+.controller('BuyCtrl',['$scope','$http','PaypalFactory',function($scope,$http,PaypalFactory){
   console.log('Buy Controller Loaded');
   $scope.card = {
     name:'',

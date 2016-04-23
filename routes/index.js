@@ -6,12 +6,6 @@ var express = require("express"),
     MainRouter = express.Router({mergeParams:true});
 
 
-// MainRouter.get('/',function(req,res){
-//    res.sendFile(Path.resolve(__dirname + '/../public/login.html'));
-// });
-
-
-
 MainRouter.get("/login",function(req,res){
   res.json({message:"Login in by making POST request to /login.",isLoggedIn:req.isAuthenticated()});
 });
@@ -31,7 +25,7 @@ MainRouter.get('/logout',function(req,res){
 });
 
 
-//Require more routes
+
 var UserRoute = require("./user");
 MainRouter.use(UserRoute);
 var PixelsRoute = require('./pixels');
@@ -39,11 +33,11 @@ MainRouter.use('/pixels',PixelsRoute);
 
 
 
-//TODO
+
 MainRouter.get("/img",function(req,res){
 
     console.log("Hitting /img");
-    res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.png'));
+    res.sendFile(PixelHandler.getReleasableImagePath());
 });
 
 

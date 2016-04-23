@@ -1,43 +1,68 @@
 var Mongoose = require("mongoose"),
     PixelSchema = require("../schemas/pixel"),
+    Path = require("path"),
+    fs = require("fs.extra"),
     Jimp = require('jimp');
 
-
-var queue = [];
-
-function initializeInterval(){
-
-
-  setInterval(function(){
-    console.log("Interval Set for 30000 ms");
-
-
-
-
-  },300);
-
-
-
+var imagePaths = {
+  secretPath : Path.resolve(__dirname+'/../img/secret-image.png'),
+  mainPath: Path.resolve(__dirname+'/../img/releasable-image.png'),
+  backupPath : Path.resolve(__dirname+'/../img/releasable-image-2.png')
 };
 
+var intervalTime = 3000;
+var isEditing = false;
+var percentage = 0.0;
 
-function reloadImage(params,callbacks){
 
-     Jimp.read(__dirname+"/../img/secret-image.png")
+function initializeInterval(){
+  console.log("Interval Set for "+intervalTime+" ms");
+
+  setInterval(function(){
+
+    if(isEditing)
+      return;
+
+    console.log('Updating image from Interval');
+
+    return fs.copy(imagePaths.mainPath,imagePaths.backupPath,{replace:true},function(err){
+      if(err){
+        console.error('There was an error copying the file!');
+        console.error(err);
+        return;
+      }
+
+      isEditing = true;
+      return reloadImage(function(){
+        isEditing = false;
+      });
+    });
+
+  },intervalTime);
+};
+
+function reloadImage(callbacks){
+
+     return Jimp.read(imagePaths.secretPath)
     .then(function(secretPic){
 
         console.log("Reading secret image!");
 
-        Jimp.read(__dirname+"/../img/releasable-image.png")
+        Jimp.read(imagePaths.mainPath)
         .then(function(releasedPic){
 
             console.log("Writing to Releasable image!");
+            var count = 0;
 
 
-            PixelSchema.find(params)
+            PixelSchema.find({})
               .lean()
               .stream()
               .on('data',function(pixelObj){
+
+                if(pixelObj.isBought){
+                  count++;
+                }
 
                   var hex = pixelObj.isBought ? secretPic.getPixelColor(pixelObj.pixel.x,pixelObj.pixel.y)
                                               : 0xFFFFFFFF;
@@ -45,16 +70,17 @@ function reloadImage(params,callbacks){
                   releasedPic.setPixelColor(hex,pixelObj.pixel.x,pixelObj.pixel.y);
               })
               .on('error',function(err){
-                console.log("Error streaming the data!");
-                console.log(err);
+                console.error("Error streaming the data!");
+                console.error(err);
               })
               .on('close',function(){
                 console.log('Done streaming the pixel data!');
+                percentage = count / 1000000.0;
 
-                releasedPic.resize(1000,1000).quality(100).write(__dirname+"/../img/releasable-image.png",function(){
+                releasedPic.write(imagePaths.mainPath,function(){
                   console.log("done writing new image after bought pixels!");
                   if(callbacks){
-                    callbacks();
+                    return callbacks();
                   }
               });
             });
@@ -63,20 +89,28 @@ function reloadImage(params,callbacks){
 };
 
 
-module.exports = {
+var PixelHandler = {
+
   init: function(){
-    reloadImage({});
-    initializeInterval();
+    return reloadImage(initializeInterval);
   },
+  getReleasableImagePath: function(){
+    return isEditing ? imagePaths.mainPath : imagePaths.backupPath;
+  },
+
+  getPurchasePercent: function(){
+    return new Number(percentage);
+  },
+
   buyPixels: function(userID,message,amount,callbacks){
 
     var self = this;
 
-    PixelSchema
+    return PixelSchema
     .findRandom({isBought:false},{},{limit:amount},function(err,pixelObjs){
 
         if(err){
-          console.log(err);
+          console.error(err);
           return callbacks();
         }
 
@@ -92,7 +126,12 @@ module.exports = {
          });
 
       console.log("Done buying " + amount + " random pixels.");
-      reloadImage({isBought:true},callbacks);
+      return callbacks();
+
     });
   }
 };
+
+
+
+module.exports = PixelHandler;

@@ -2,36 +2,64 @@ angular.module('App')
 .controller('HomeCtrl',['$scope','$location','UserFactory','ImageDataFactory',function($scope,$location,UserFactory,ImageDataFactory){
   console.log("Home Controller Loaded");
 
-  ImageDataFactory.initialize();
-  $('#releasable-image').mousemove(function(e){
-    //console.log(e.offsetX + ", " + e.offsetY);
 
-    var data = ImageDataFactory.getMetaData(e.offsetX,e.offsetY);
-    //console.log(data);
-    if(!data){
-      $('#image-tooltip').popover('hide');
-      return;
-    }
+ var x = 0;
+ var y = 0;
+ var isInsidePic = false;
 
-    //console.log(data);
-    var firstname = data.buyer.id.firstname;
-    var message =  data.message;
+  var lastMouseMoved = "";
 
-    //console.log(e);
-  //  console.log($('#image-tooltip'));
 
-    $('#image-tooltip')
-    .attr('data-original-title', firstname + " said:")
-    .attr('data-content', message)
-    .css({"position":"absolute","top":e.pageY - 25 + "px","left": e.offsetX + 125+"px"})
-    //.popover({trigger: 'manual'})
-    .popover('show');
-    //$('[data-toggle="popover"]').attr('title',message + " -"+firstname);
+
+  $('#releasable-image').mouseleave(function(e){
+    isInsidePic = false;
   });
 
-  // $('#releasable-image').mouseleave(function(){
-  //   $('#image-tooltip').popover('hide');
-  // });
+
+  $('#releasable-image').mousemove(function(e){
+    //console.log(e.offsetX + ", " + e.offsetY);
+    isInsidePic = true;
+    lastMouseMoved = new Date().getTime();
+    x = e.pageX - $(this).offset().left;
+    y = e.pageY - $(this).offset().top;
+
+    setTimeout(function(){
+      var currentTime = new Date().getTime();
+      //console.log(currentTime - lastMouseMoved);
+
+      if(currentTime - lastMouseMoved >= 999){
+        console.log(x + ", " + y);
+        ImageDataFactory.getPixelInfo(x,y,function(err,result){
+          //console.log(result);
+          if(!result || !result.success || !result.pixelInfo || !result.pixelInfo.isBought){
+            //console.error('No result');
+              $('#image-tooltip').popover('hide');
+              return;
+          }
+          //console.log(result);
+
+          var firstname = result.pixelInfo.buyer.firstname;
+          var message = result.pixelInfo.message;
+
+          $('#image-tooltip')
+          .attr('data-original-title', firstname + " said:")
+          .attr('data-content', message)
+          .css({"position":"absolute","top":e.pageY - 25 + "px","left": e.pageX+"px"})
+          .popover('show');
+
+          $('[data-toggle="popover"]').attr('title',message + " -"+firstname);
+
+        });
+
+      } else {
+
+      }
+    },1000);
+  });
+
+  $('#releasable-image').mouseleave(function(){
+    $('#image-tooltip').popover('hide');
+  });
 
 
 

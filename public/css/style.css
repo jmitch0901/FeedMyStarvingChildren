@@ -3,6 +3,7 @@
 
 body {
   background: #236192; /* fallback for old browsers */
+  background-color:#236192;
   background: -webkit-linear-gradient(right, #236192, #4e80a7);
   background: -moz-linear-gradient(right, #236192, #4e80a7);
   background: -o-linear-gradient(right, #236192, #4e80a7);

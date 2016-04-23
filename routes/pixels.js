@@ -1,24 +1,66 @@
 var express = require('express'),
     Mongoose = require('mongoose'),
+    JSONStream = require('JSONStream'),
     PixelSchema = require('../schemas/pixel'),
+    PixelHandler = require('../factories/pixelHandlerv2'),
     PixelRouter = express.Router({mergeParams:true});
 
-PixelRouter.get('/',function(req,res){
 
-  PixelSchema.find({isBought:true})
-  .populate('buyer.id')
+/*
+  This is INCREDIBLY expensive.
+  THIS is my culprit
+*/
+
+
+PixelRouter.get('/',function(req,res){
+  //console.log('Hitting pixel metadata route!');
+
+  if(!req.query.x || !req.query.y){
+    return res.json(400,{success:false});
+  }
+
+  var x = req.query.x;
+  var y = req.query.y;
+
+  PixelSchema
+  .findOne({'pixel.x':x,'pixel.y':y})
   .lean()
+  .populate('buyer.id')
   .exec(function(err,result){
     //console.log(result);
     if(err){
-      console.log(err);
-      //res.json({error:err});
-      return;
+      console.error(err);
+      return res.json({success:false});
     }
-    res.json(result);
-    //console.log(result);
-  //  res.json(result);
+
+    if(!result){
+      return res.json({success:false});
+    }
+
+    if(result.isBought && result.buyer){
+      result.buyer = {
+        firstname: result.buyer.id.firstname
+      };
+    }
+
+    return res.json({success:true,pixelInfo:result});
   });
+
+
+
+  // .on('data',function(pixel){
+  //
+  // })
+  // .on('error',function(err){
+  //   console.error('There was an error streaming the pixel meta-data');
+  //   console.error(err);
+  //   return;
+  // })
+  // .on('close',function(){
+  //   console.log('Sending Pixel Metadata');
+  //   res.json([]);
+  //   return;
+  // });
 
 });
 
