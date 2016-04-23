@@ -8,5 +8,6 @@ public/bower_components/
 .DS_Store
 .DS_Store~
 img/
+img/*
 public/app.min.js
 */*.min.*
