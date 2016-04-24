@@ -26,8 +26,8 @@ body {
 }
 
 #about{
-  font-size: 2em;
-    font-family: 'Merriweather', serif;
+  font-size: 1.5em;
+  font-family: 'Merriweather', serif;
 }
 
 .form {
@@ -89,6 +89,10 @@ body {
 
 #buyPixels .control-group {
   margin-top: 12px;
+}
+
+#goal h1 {
+  font-size: 36pt;
 }
 
 

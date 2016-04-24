@@ -50,7 +50,7 @@ UserRouter.put('/user/:id_user',function(req,res){
 UserRouter.post('/user/:id_user/buy',
   Middleware.isLoggedIn,
   Middleware.validateBuyPixels,
-  Middleware.filterProfanity, //TODO
+  Middleware.filterProfanity,
   function(req,res){
 
 

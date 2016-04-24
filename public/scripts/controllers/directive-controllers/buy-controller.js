@@ -14,8 +14,34 @@ angular.module('App')
   $scope.message = '';
   $scope.amount =  10;
   $scope.isSuccess = false;
-
+  $scope.buyEquation = $scope.amount + " X $0.22 = $" + ($scope.amount * 0.22);
   $scope.resultMessage = '';
+
+  $('#input-amount').on('keypress',function(e){
+    if (e.which < 48 || e.which > 57){
+      e.preventDefault();
+    }
+  });
+
+  $scope.$watch('amount',function(newValue,oldValue){
+
+    var result = Number($scope.amount * 0.22).toFixed(2);
+    if(isNaN(result)){
+      result = 0;
+    }
+
+    console.log(newValue);
+
+    if(newValue < 10 || newValue > 1000 || newValue === null || newValue === undefined){
+      $('#amount-form-group').removeClass('has-success');
+      $('#amount-form-group').addClass('has-error');
+    } else {
+      $('#amount-form-group').removeClass('has-error');
+      $('#amount-form-group').addClass('has-success');
+    }
+
+      $scope.buyEquation = ($scope.amount || 0) + " X $0.22 = $" + Number(result).toFixed(2);
+  });
 
 
   $scope.buy = function(){
@@ -23,18 +49,15 @@ angular.module('App')
 
     if($scope.amount < 10){
 
-      $('#amount-form-group').addClass('has-error');
-      $scope.amount = 10;
+      //$('#amount-form-group').addClass('has-error');
       return;
     } else if ($scope.amount > 1000){
 
-      $('#amount-form-group').addClass('has-error');
-      $scope.amount = 1000;
+      //$('#amount-form-group').addClass('has-error');
       return;
     } else if ($scope.amount === null || $scope.amount === undefined){
 
-      $('#amount-form-group').addClass('has-error');
-      $scope.amount = 10;
+      //$('#amount-form-group').addClass('has-error');
       return;
     }
 

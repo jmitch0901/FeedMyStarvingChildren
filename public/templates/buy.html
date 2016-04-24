@@ -106,13 +106,31 @@
               <div class="col-sm-2">
 
               </div>
-              <div class="form-group col-sm-8">
+              <div class="col-sm-6">
                   <label class="control-label" for="message">Your Message</label>
                   <input type="text" class="form-control" ng-model="message" name="message" id="message" placeholder="Thank you for donating! :)">
               </div>
               <div class="col-sm-2">
+                <div class="form-group" id="amount-form-group">
+                  <label class="control-label" for="input-amount">Pixel Amount</label>
+                  <input type="number" class="form-control" min="10" id="input-amount" ng-model="amount" placeholder="amount here">
+                  <h5>(min 10, max 1000)</h5>
+
+                </div>
+              </div>
+              <div class="col-sm-2">
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-sm-2">
 
               </div>
+              <div class="col-sm-8">
+                <h1 style="text-align:center;">{{buyEquation}}</h1>
+              </div>
+
             </div>
 
             <div class="row">

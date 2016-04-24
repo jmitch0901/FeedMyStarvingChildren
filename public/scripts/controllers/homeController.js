@@ -75,7 +75,12 @@ $('#releasable-image').mousemove(function(e){
     ImageDataFactory.getPixelPercentage(function(percent){
       $scope.percentage = Number(percent).toFixed(2);
     });
-  },20000);
+  },30000);
+
+  $scope.imgSrc = "/api/img?"+new Date().getTime();
+  setInterval(function(){
+    $scope.imgSrc = "/api/img?"+new Date().getTime();
+  },30000);
 
 
   $scope.logout = function(){

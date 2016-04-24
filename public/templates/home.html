@@ -94,7 +94,7 @@
 
     <!-- <button class="btn" ng-click="logout()">Logout</button>
     <h3> Hello {{userName}}    </h3> -->
-    <div  ng-show="percentage != -1" class="jumbotron">
+    <div id="goal" ng-show="percentage != -1" class="jumbotron">
       <h1>We have reached <span><strong>{{percentage}}%</strong></span> to our goal!</h1>
     </div>
   <button class="btn btn-lg btn-primary" ng-click="showAbout()">About</button>
@@ -129,7 +129,7 @@
 
   <div id="main-image">
       <a id="image-tooltip" data-placement="right"  data-toggle="popover"></a>
-      <img id="releasable-image" src="https://localhost:3000/api/img">
+      <img id="releasable-image" ng-src="{{imgSrc}}">
   </div>
 
 
