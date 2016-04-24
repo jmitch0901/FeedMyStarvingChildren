@@ -10,7 +10,7 @@ var imagePaths = {
   backupPath : Path.resolve(__dirname+'/../img/releasable-image-2.png')
 };
 
-var intervalTime = 3000;
+var intervalTime = 30000 * 2; //1 minute
 var isEditing = false;
 var percentage = 0.0;
 

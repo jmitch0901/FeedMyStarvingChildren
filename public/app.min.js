@@ -1,4 +1,12 @@
-angular.module('App',['ngRoute','ngResource','ngAnimate','ngCookies','ui.router'])
+angular.module('App',
+['ngRoute',
+'ngResource',
+'ngAnimate',
+'ngCookies',
+'ui.router',
+'720kb.socialshare'
+
+])
 .config(['$routeProvider','$stateProvider', '$urlRouterProvider',function($routeProvider,$stateProvider, $urlRouterProvider){
 
 

@@ -29,6 +29,7 @@
     "socket.io": "^1.4.5",
     "angular-modal-service": "^0.9.10",
     "underscore": "^1.8.3",
-    "angular-ui-router": "^0.2.18"
+    "angular-ui-router": "^0.2.18",
+    "angular-socialshare": "angularjs-socialshare#^2.1.2"
   }
 }

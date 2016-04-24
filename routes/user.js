@@ -61,7 +61,7 @@ UserRouter.post('/user/:id_user/buy',
           res.json({error:err});
           return;
       }
-      res.json({success:true,message:'You have successfully purchased ' + req.body.amount + ' pixels! Thank you!'});
+      res.json({success:true,message:'You have successfully purchased ' + req.body.amount + ' pixels! Your payment is now being processed. Your pixels will appear afterwards. Thank you!'});
       //res.sendFile(Path.resolve(__dirname+'/../img/releasable-image.png'));
   });
 });
