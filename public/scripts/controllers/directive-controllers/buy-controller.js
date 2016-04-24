@@ -15,6 +15,7 @@ angular.module('App')
 
   $scope.resultMessage = '';
   $scope.buy = function(){
+    $('#purchase-btn').button('loading');
     PaypalFactory.buy($scope.card,$scope.amount,$scope.message,function(err,result){
 
       if(err){
@@ -35,6 +36,11 @@ angular.module('App')
       .addClass(isSuccessClass);
 
       $('#buy-success-modal').modal('show');
+      $('#buy-success-modal').on('hidden.bs.modal',function(){
+        $('#purchase-btn').button('reset');
+      });
+
+
 
 
       $('#buy-success-modal').on('hidden.bs.modal',function(){
@@ -49,6 +55,7 @@ angular.module('App')
             year:'',
             cvv: ''
           };
+
           $('#buy-slider').slideUp('slow');
         }
       });

@@ -18,7 +18,7 @@
 						<div ng-show="errorMessage.length > 0" class="alert alert-danger">
 					  	<p>{{errorMessage}}<p>
 						</div>
-				<button class="btn btn-lg btn-primary btn-block" ng-click="login()">Login</button><br><br>
+				<button id="login-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Logging In..." class="btn btn-lg btn-primary btn-block" ng-click="login()">Login</button><br><br>
 
 				Not yet a member?<br>
 				Click <a ui-sref="register">here</a> to sign up.</br>

@@ -67,7 +67,7 @@
           <input style="margin-bottom:12px;" type="text" class="form-control" ng-model="message" name="message" id="message" placeholder="Thank you for donating! :)">
         </div>
         <div class="col-sm-12">
-          <button ng-click="buy()" style="font-size:18pt;" type="button" class="btn btn-success btn-block">Pay Now</button>
+          <button id="purchase-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing Order" ng-click="buy()" style="font-size:18pt; padding: 0 50px 0 50px;:" type="button" class="btn btn-success start">Pay Now</button>
         </div>
       </div>
     </fieldset>

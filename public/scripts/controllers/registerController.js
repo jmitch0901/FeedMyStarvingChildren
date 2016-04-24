@@ -13,11 +13,13 @@ angular.module('App')
 
   $('#register-success-modal').on('hidden.bs.modal',function(){
     console.log("modal is hidden!");
+    $('#register-btn').button('reset');
     $state.go('home');
   });
 
   $scope.doRegister = function(){
     console.log("Signing up!");
+
     $scope.errorMessage = "";
     if(
 
@@ -38,8 +40,9 @@ angular.module('App')
     }
 
     //done with form checks
-
+    $('#register-btn').button('loading');
     UserFactory.register($scope.user,function(err,result){
+
       if(err){
         console.log(err);
         $scope.errorMessage = err.error;

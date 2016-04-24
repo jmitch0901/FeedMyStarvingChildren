@@ -12,11 +12,13 @@ angular.module('App')
   $scope.errorMessage = "";
 
   $scope.login = function(){
+    $('#login-btn').button('loading');
 
     $scope.errorMessage = "";
 
     //TODO finish this login method
     UserFactory.login($scope.email,$scope.password,function(err){
+      $('#login-btn').button('reset');
       if(err){
         $scope.errorMessage = err;
         console.error(err);
@@ -24,6 +26,7 @@ angular.module('App')
       }
 
       $state.go('home');
+
 
     });
   };

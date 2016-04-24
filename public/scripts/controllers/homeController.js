@@ -65,15 +65,18 @@ $('#releasable-image').mousemove(function(e){
 });
 
 
-
-
-
   $scope.isLoggedIn = UserFactory.isLoggedIn;
   $scope.userName = UserFactory.me.firstname ? UserFactory.me.firstname : "";
   $scope.percentage = -1;
   ImageDataFactory.getPixelPercentage(function(percent){
     $scope.percentage = Number(percent).toFixed(2);
   });
+  setInterval(function(){
+    ImageDataFactory.getPixelPercentage(function(percent){
+      $scope.percentage = Number(percent).toFixed(2);
+    });
+  },20000);
+
 
   $scope.logout = function(){
     UserFactory.logout(function(err){
