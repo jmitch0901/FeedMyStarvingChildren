@@ -14,7 +14,7 @@ UserRouter.get('/user',function(req,res){
 });
 
 
-UserRouter.post('/user',Middleware.checkUserRegistry,function(req,res){
+UserRouter.post('/user',Middleware.checkUserRegistry,Middleware.filterNames,function(req,res){
     var userBody = req.body.user;
     var user = {
       firstname: userBody.firstname,
@@ -27,7 +27,6 @@ UserRouter.post('/user',Middleware.checkUserRegistry,function(req,res){
     UserSchema.register(user,userBody.password,function(err,result){
       if(err){
         console.log(err);
-        res.status(503);
         return res.json({error:err});
       }
         res.json({success:"You have successfully registered! You can now login with a POST request to /login."});

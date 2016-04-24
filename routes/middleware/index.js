@@ -97,6 +97,36 @@ var Middleware = {
 
     next();
   },
+
+  filterNames: function(req,res,next){
+
+    var potentialUser = req.body.user;
+
+    var badFirstname = SwearJar.profane(potentialUser.firstname);
+    var badLastname = SwearJar.profane(potentialUser.lastname);
+
+    if(badFirstname || badLastname){
+
+      var message = "";
+
+      if(badFirstname && badLastname){
+        message = "Could not sign you up. You there is profanity in your first name and last name!";
+      } else if(badFirstname){
+        message = "Could not sign you up. You there is profanity in your first name!";
+      } else if(badLastname){
+        message = "Could not sign you up. You there is profanity in your last name!";
+      }
+
+      return res.json(400,{error:message});
+
+    }
+
+    return next();
+
+
+
+  },
+
   filterProfanity: function(req,res,next){
     if(!req.body.message){
       req.body.message = "Thanks for donating :)";
