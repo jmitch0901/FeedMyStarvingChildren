@@ -1,6 +1,7 @@
 var Passport = require('passport'),
     Express = require('express'),
     UserSchema = require('../../schemas/user'),
+    SwearJar = require('swearjar'),
     Mongoose = require('mongoose');
 
 
@@ -101,6 +102,8 @@ var Middleware = {
       req.body.message = "Thanks for donating :)";
       return next();
     }
+
+    req.body.message = SwearJar.censor(req.body.message);
     next();
 
   }

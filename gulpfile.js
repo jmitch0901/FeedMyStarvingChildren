@@ -85,12 +85,12 @@ Gulp.task('scripts',function(){
     .pipe(BrowserSync.reload({stream:true}));
 });
 
-Gulp.task('styles',['scripts'],function(){
+Gulp.task('styles',function(){
   return Gulp.src('public/css/**/*.css')
   .pipe(BrowserSync.reload({stream:true}));
 });
 
-Gulp.task('html',['scripts'],function(){
+Gulp.task('html',function(){
   return Gulp.src('public/**/*.html')
   .pipe(BrowserSync.reload({stream:true}));
 });

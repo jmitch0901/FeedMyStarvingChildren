@@ -23,8 +23,8 @@ $('#releasable-image').mousemove(function(e){
   //console.log(e.offsetX + ", " + e.offsetY);
   isInsidePic = true;
   lastMouseMoved = new Date().getTime();
-  x = Math.round(e.pageX - $(this).offset().left);
-  y = Math.round(e.pageY - $(this).offset().top);
+  x = Math.floor(e.pageX - $(this).offset().left) - 2;
+  y = Math.floor(e.pageY - $(this).offset().top) - 2;
 
   var element = $(this);
 
