@@ -87,6 +87,10 @@ body {
   overflow-x: auto;
 }
 
+#buyPixels .control-group {
+  margin-top: 12px;
+}
+
 
 
 /*.social-icon img{
