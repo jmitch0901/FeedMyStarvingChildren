@@ -8,7 +8,7 @@
       </div>
       <div class="col-sm-8">
           <fieldset>
-              <legend>Payment</legend>
+              <legend>Payment ($0.22 per pixel)</legend>
 
               <div class="row">
                 <div class="control-group col-lg-4 col-md-6 col-sm-12">
@@ -128,7 +128,7 @@
 
               </div>
               <div class="col-sm-8">
-                <h1 style="text-align:center;">{{buyEquation}}</h1>
+                <h1 id="equation" style="text-align:center; font-size:46pt;"><strong>{{buyEquation}}<strong></h1>
               </div>
 
             </div>
@@ -163,129 +163,5 @@
             </div>
         </fieldset>
       </div>
-
-
-  <!-- <form class="form-horizontal" role="form">
-    <fieldset>
-
-      <legend><strong>Payment</strong></legend> -->
-
-      <!-- <div class="row">
-
-        <div class="form-group col-sm-4">
-          <label class="col-xs-3 control-label" for="card-holder-name">Name on Card</label>
-          <div class="col-xs-9">
-            <input ng-model="card.name" type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Full Name">
-          </div>
-        </div>
-
-        <div class="form-group col-sm-8">
-          <label class="col-xs-3 control-label" for="card-number">Card Number</label>
-          <div class="col-xs-9">
-            <input ng-model="card.number" type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
-          </div>
-        </div>
-
-
-      </div> -->
-
-      <!-- <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-holder-name">Name on Card</label>
-        <div class="col-sm-9">
-          <input ng-model="card.name" type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-number">Card Number</label>
-        <div class="col-sm-9">
-          <input ng-model="card.number" type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
-        </div>
-      </div>
-
-
-        <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
-        <div class="col-sm-3">
-          <div class="row">
-            <div class="form-group">
-              <div class="col-xs-6">
-                <select ng-model="card.month" class="form-control" name="expiry-month" id="expiry-month">
-                  <option>Month</option>
-                  <option value="01">Jan (01)</option>
-                  <option value="02">Feb (02)</option>
-                  <option value="03">Mar (03)</option>
-                  <option value="04">Apr (04)</option>
-                  <option value="05">May (05)</option>
-                  <option value="06">June (06)</option>
-                  <option value="07">July (07)</option>
-                  <option value="08">Aug (08)</option>
-                  <option value="09">Sep (09)</option>
-                  <option value="10">Oct (10)</option>
-                  <option value="11">Nov (11)</option>
-                  <option value="12">Dec (12)</option>
-                </select>
-              </div>
-
-              <div class="col-xs-6">
-                <select ng-model="card.year" class="form-control" name="expiry-year">
-                  <option value="16">2016</option>
-                  <option value="17">2017</option>
-                  <option value="18">2018</option>
-                  <option value="19">2019</option>
-                  <option value="20">2020</option>
-                  <option value="21">2021</option>
-                  <option value="22">2022</option>
-                  <option value="23">2023</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-
-        </div>
-        <label class="col-sm-1 control-label" for="cvv">Card CVV</label>
-        <div class="col-sm-2">
-          <input ng-model="card.cvv" type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code">
-        </div>
-
-
-<div class="row">
-  <div class="col-sm-6">
-    <label class="control-label" for="amount">Amount of Pixels </label>
-
-    <div class="form-group" id="amount-form-group">
-
-        <span><input type="number" class="form-control" id="input-amount" ng-model="amount" placeholder="amount here"> <p>(min 10) (max 1000)</p></span>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="form-group">
-        <label class="control-label" for="message">Your Message</label>
-        <input style="margin-bottom:12px;" type="text" class="form-control" ng-model="message" name="message" id="message" placeholder="Thank you for donating! :)">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-      <div class="form-group">
-          <button id="purchase-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing Order" ng-click="buy()" style="font-size:18pt; padding: 0 50px 0 50px;:" type="button" class="btn btn-success start">Pay Now</button>
-      </div> -->
-    <!-- </fieldset>
-  </form> -->
-
-  <!-- <div class="row">
-    <div class="alert alert-warning">
-      <h4><strong>Security notice: </strong></h4>
-      <p>
-        'feedmystarvingpixels.com' is in beta-mode and will <strong>NOT</strong> store any credit card information!
-      </p>
-    </div>
-  </div> -->
 
 </div>
