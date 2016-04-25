@@ -52,7 +52,7 @@ var httpListener = app.listen(process.env.PORT || 8080, process.env.IP, function
 
 //HTTPS
 var certOptions = require('./configs/certs');
-var httpsListener = https.createServer(certOptions,app).listen(3000,function(){
+var httpsListener = https.createServer(certOptions,app).listen(process.env.HTTPS_PORT || 3000,function(){
   console.log("HTTPS SERVER STARTED");
 });
 
