@@ -13,7 +13,7 @@ var imagePaths = {
 var intervalTime = 30000 * 2; //1 minute
 var isEditing = false;
 var percentage = 0.0;
-
+var pixelsBoughtCount = 0;
 
 function initializeInterval(){
   console.log("Interval Set for "+intervalTime+" ms");
@@ -76,6 +76,7 @@ function reloadImage(callbacks){
               .on('close',function(){
                 console.log('Done streaming the pixel data!');
                 percentage = count / 1000000.0;
+                pixelsBoughtCount = count;
 
                 releasedPic.write(imagePaths.mainPath,function(){
                   console.log("done writing new image after bought pixels!");
@@ -102,6 +103,10 @@ var PixelHandler = {
     return percentage * 100;
   },
 
+  getPixelsRemainingCount: function(){
+    return new Number(pixelsBoughtCount);
+  },
+
   buyPixels: function(userID,message,amount,callbacks){
 
     var self = this;
@@ -111,7 +116,7 @@ var PixelHandler = {
 
         if(err){
           console.error(err);
-          return callbacks();
+          return callbacks(err);
         }
 
         pixelObjs.forEach(function(pix){
@@ -120,7 +125,7 @@ var PixelHandler = {
           pix.isBought = true;
           pix.save(function(err){
             if(err){
-              console.log(err);
+              console.error(err);
             }
           });
          });

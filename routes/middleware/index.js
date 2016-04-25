@@ -1,5 +1,6 @@
 var Passport = require('passport'),
     Express = require('express'),
+    PixelHandler = require('../../factories/pixelHandlerv2'),
     UserSchema = require('../../schemas/user'),
     SwearJar = require('swearjar'),
     Mongoose = require('mongoose');
@@ -68,6 +69,16 @@ var Middleware = {
     }
 
     req.body.amount = Number(req.body.amount);
+
+    if(req.body.amount < 10 || req.body.amount > 1000){
+      return res.json(400,{success:false, error:'The purchase minimum is 10, and the maximum is 1000. Please ensure it is within this range!'});
+    }
+
+    var pixelsLeft = PixelHandler.getPixelsRemainingCount();
+
+    if(req.body.amount > pixelsLeft){
+      return res.json(400,{success:false, error: 'There are only ' + pixelsLeft + ' pixels remaining to buy. Please purchase this amount or less.'});
+    }
 
     var cardName = card.name,
         cardNum = card.number,

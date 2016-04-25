@@ -6,6 +6,7 @@ var Gulp = require('gulp'),
     Autoprefixer = require('gulp-autoprefixer'),
     GulpRename = require('gulp-rename'),
     GulpNGAnnotate = require('gulp-ng-annotate'),
+    GulpNoLogs = require('gulp-removelogs'),
     Del = require('del'),
     MainBowerFiles = require('main-bower-files'),
     Nodemon = require('gulp-nodemon'),
@@ -33,8 +34,7 @@ var config = {
     'routes/**/*',
     'schemas/**/*',
     'seeds/**/*',
-    'img/releasable-image.png',
-    'img/secret-image.png',
+    'img/*.png',
     'node_modules/**/*',
     'app.js'
   ]
@@ -105,9 +105,11 @@ Gulp.task('watch',['scripts','styles','html'],function(){
 Gulp.task('default',['scripts','styles','html','browser-sync','watch']);
 
 //BUILD FOR DEPLOYMENT
-Gulp.task('build',['build:server','build:client'],function(){
+
+Gulp.task('build',['build:clean','build:server','build:client'],function(){
   console.log('BUILD');
 });
+
 
 Gulp.task('build:clean',function(cb){
   console.log('BUILD -> CLEAN');
@@ -138,6 +140,7 @@ Gulp.task('build:client:scripts',['build:clean'],function(){
   console.log('BUILD -> CLIENT -> SCRIPTS');
   return Gulp.src(config.jsConcatFiles)
     .pipe(GulpConcat('app.min.js'))
+    .pipe(GulpNoLogs())
     .pipe(GulpNGAnnotate())
     .pipe(GulpUglify())
       .on('error',errorlog)

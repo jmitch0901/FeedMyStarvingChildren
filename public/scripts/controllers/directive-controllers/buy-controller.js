@@ -35,12 +35,15 @@ angular.module('App')
     console.log(newValue);
 
     if(newValue < 10 || newValue > 1000 || newValue === null || newValue === undefined){
+      result = 0;
+      $('#purchase-btn').prop('disabled',true);
       $('#amount-form-group').removeClass('has-success');
       $('#amount-form-group').addClass('has-error');
       $('#equation').removeClass('equation-success');
       $('#equation').addClass('equation-danger');
       $('#purchase-btn').prop('disabled',true);
     } else {
+      $('#purchase-btn').prop('disabled',false);
       $('#amount-form-group').removeClass('has-error');
       $('#amount-form-group').addClass('has-success');
       $('#equation').removeClass('equation-danger');
