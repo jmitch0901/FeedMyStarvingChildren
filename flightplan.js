@@ -1,6 +1,6 @@
 var plan = require('flightplan');
 
-var appName = 'fmsc';
+var appName = 'node-app';
 var username = 'deploy';
 var startFile = './app.js';
 
@@ -27,13 +27,12 @@ plan.remote(function(remote){
   remote.log('Move to Web Root folder!');
   remote.sudo('cp -R /tmp/' + tmpDir + ' ~', {user: username});
 
-  remote.rm('-rf /tmp/' + tmpDir);
 
-  remote.log('Install dependencies');
-  remote.sudo('npm --production --prefix ~/' + tmpDir + ' install ~/' + tmpDir, {user: username});
+  remote.rm('-rf /tmp/' + tmpDir);
 
   remote.log('Reload application');
   remote.sudo('ln -snf ~/' + tmpDir + ' ~/'+appName, {user: username});
+
 
   remote.exec('sudo restart node-app');
 
