@@ -33,14 +33,17 @@ angular.module('App')
     console.log(newValue);
 
     if(newValue < 10 || newValue > 1000 || newValue === null || newValue === undefined){
+      result = 0;
+      $('#purchase-btn').prop('disabled',true);
       $('#amount-form-group').removeClass('has-success');
       $('#amount-form-group').addClass('has-error');
     } else {
+      $('#purchase-btn').prop('disabled',false);
       $('#amount-form-group').removeClass('has-error');
       $('#amount-form-group').addClass('has-success');
     }
 
-      $scope.buyEquation = ($scope.amount || 0) + " X $0.22 = $" + Number(result).toFixed(2);
+    $scope.buyEquation = ($scope.amount || 0) + " X $0.22 = $" + Number(result).toFixed(2);
   });
 
 

@@ -33,8 +33,7 @@ var config = {
     'routes/**/*',
     'schemas/**/*',
     'seeds/**/*',
-    'img/releasable-image.png',
-    'img/secret-image.png',
+    'img/*.png',
     'node_modules/**/*',
     'app.js'
   ]
@@ -105,9 +104,11 @@ Gulp.task('watch',['scripts','styles','html'],function(){
 Gulp.task('default',['scripts','styles','html','browser-sync','watch']);
 
 //BUILD FOR DEPLOYMENT
-Gulp.task('build',['build:server','build:client'],function(){
+
+Gulp.task('build',['build:clean','build:server','build:client'],function(){
   console.log('BUILD');
 });
+
 
 Gulp.task('build:clean',function(cb){
   console.log('BUILD -> CLEAN');
