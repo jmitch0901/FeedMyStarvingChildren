@@ -25,7 +25,9 @@ angular.module('App')
 
   $scope.$watch('amount',function(newValue,oldValue){
 
-    var result = Number($scope.amount * 0.22).toFixed(2);
+    var newAmount = $scope.amount > 1000 ? 0  : $scope.amount;
+
+    var result = Number(newAmount * 0.22).toFixed(2);
     if(isNaN(result)){
       result = 0;
     }
@@ -37,13 +39,20 @@ angular.module('App')
       $('#purchase-btn').prop('disabled',true);
       $('#amount-form-group').removeClass('has-success');
       $('#amount-form-group').addClass('has-error');
+      $('#equation').removeClass('equation-success');
+      $('#equation').addClass('equation-danger');
+      $('#purchase-btn').prop('disabled',true);
     } else {
       $('#purchase-btn').prop('disabled',false);
       $('#amount-form-group').removeClass('has-error');
       $('#amount-form-group').addClass('has-success');
+      $('#equation').removeClass('equation-danger');
+      $('#equation').addClass('equation-success');
+      $('#purchase-btn').prop('disabled',false);
+
     }
 
-    $scope.buyEquation = ($scope.amount || 0) + " X $0.22 = $" + Number(result).toFixed(2);
+      $scope.buyEquation = (newAmount || 0) + " X $0.22 = $" + Number(result).toFixed(2);
   });
 
 
