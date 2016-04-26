@@ -104,7 +104,7 @@ var PixelHandler = {
   },
 
   getPixelsRemainingCount: function(){
-    return new Number(pixelsBoughtCount);
+    return 1000000 - new Number(pixelsBoughtCount);
   },
 
   buyPixels: function(userID,message,amount,callbacks){
