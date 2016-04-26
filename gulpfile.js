@@ -128,7 +128,7 @@ Gulp.task('build:server',['build:clean'],function(){
 
 Gulp.task('build:client',['build:clean','build:client:styles','build:client:scripts','build:client:html'],function(){
   console.log('BUILD -> CLIENT');
-  Gulp.src(['public/bower_components/**/*.min.js','public/img/**/*'],{base:'./'})
+  Gulp.src(['public/bower_components/**/*','public/img/**/*'],{base:'./'})
   .pipe(Gulp.dest('dist/'));
 });
 

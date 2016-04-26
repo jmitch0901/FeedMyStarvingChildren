@@ -36,7 +36,7 @@ plan.remote(function(remote){
   remote.sudo('npm --production --prefix ~/' + tmpDir + '/dist install ~/' + tmpDir+'/dist', {user: username});
 
 
-  //remote.exec('sudo restart node-app');
+  remote.exec('sudo restart node-app');
 
   // remote.exec('forever stop ~/'+appName+'/'+startFile, {failsafe: true});
   // remote.exec('forever start ~/'+appName+'/'+startFile);
