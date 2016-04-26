@@ -35,7 +35,9 @@ var config = {
     'schemas/**/*',
     'seeds/**/*',
     'img/*.png',
-    'node_modules/**/*',
+    '.bowerrc',
+    'bower.json',
+    'package.json',
     'app.js'
   ]
 };
@@ -114,7 +116,7 @@ Gulp.task('build',['build:clean','build:server','build:client'],function(){
 Gulp.task('build:clean',function(cb){
   console.log('BUILD -> CLEAN');
   return Del([
-    'dist/*'
+    'dist/**/*'
   ],cb);
 });
 
@@ -126,7 +128,7 @@ Gulp.task('build:server',['build:clean'],function(){
 
 Gulp.task('build:client',['build:clean','build:client:styles','build:client:scripts','build:client:html'],function(){
   console.log('BUILD -> CLIENT');
-  Gulp.src(['public/bower_components/**/*','public/img/**/*'],{base:'./'})
+  Gulp.src(['public/bower_components/**/*.min.js','public/img/**/*'],{base:'./'})
   .pipe(Gulp.dest('dist/'));
 });
 
@@ -146,6 +148,7 @@ Gulp.task('build:client:scripts',['build:clean'],function(){
       .on('error',errorlog)
     .pipe(Gulp.dest('./dist/public'));
 });
+
 
 Gulp.task('build:client:html',['build:clean'],function(){
   return Gulp.src(['./public/**/*.html'])

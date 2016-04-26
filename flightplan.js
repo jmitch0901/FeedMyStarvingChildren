@@ -2,7 +2,7 @@ var plan = require('flightplan');
 
 var appName = 'node-app';
 var username = 'deploy';
-var startFile = './app.js';
+var startFile = 'app.js';
 
 plan.target('production',{
   host:'feedmystarvingpixels.com',
@@ -17,7 +17,7 @@ plan.local(function(local){
 
   local.log('Running GULP BUILD!');
   local.exec('gulp build');
-  var files = local.exec('ls ./dist/**/*',{silent:true});
+  var files = local.exec('find ./dist',{silent:true});
   local.transfer(files,'/tmp/' + tmpDir);
 
 });
@@ -33,8 +33,10 @@ plan.remote(function(remote){
   remote.log('Reload application');
   remote.sudo('ln -snf ~/' + tmpDir + ' ~/'+appName, {user: username});
 
+  remote.sudo('npm --production --prefix ~/' + tmpDir + '/dist install ~/' + tmpDir+'/dist', {user: username});
 
-  remote.exec('sudo restart node-app');
+
+  //remote.exec('sudo restart node-app');
 
   // remote.exec('forever stop ~/'+appName+'/'+startFile, {failsafe: true});
   // remote.exec('forever start ~/'+appName+'/'+startFile);
