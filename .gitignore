@@ -11,3 +11,4 @@ img/
 img/*
 public/app.min.js
 */*.min.*
+*.log

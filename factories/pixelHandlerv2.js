@@ -10,7 +10,7 @@ var imagePaths = {
   backupPath : Path.resolve(__dirname+'/../img/releasable-image-2.png')
 };
 
-var intervalTime = 30000 * 2; //1 minute
+var intervalTime = 60000 / 6; //1 minute
 var isEditing = false;
 var percentage = 0.0;
 var pixelsBoughtCount = 0;
@@ -54,20 +54,21 @@ function reloadImage(callbacks){
             console.log("Writing to Releasable image!");
             var count = 0;
 
-
             PixelSchema.find({})
               .lean()
               .stream()
               .on('data',function(pixelObj){
 
+
+                var hex = pixelObj.isBought ? secretPic.getPixelColor(pixelObj.pixel.x,pixelObj.pixel.y)
+                                            : 0xFFFFFFFF;
+
                 if(pixelObj.isBought){
                   count++;
                 }
 
-                  var hex = pixelObj.isBought ? secretPic.getPixelColor(pixelObj.pixel.x,pixelObj.pixel.y)
-                                              : 0xFFFFFFFF;
+                releasedPic.setPixelColor(hex,pixelObj.pixel.x,pixelObj.pixel.y);
 
-                  releasedPic.setPixelColor(hex,pixelObj.pixel.x,pixelObj.pixel.y);
               })
               .on('error',function(err){
                 console.error("Error streaming the data!");
@@ -77,7 +78,6 @@ function reloadImage(callbacks){
                 console.log('Done streaming the pixel data!');
                 percentage = count / 1000000.0;
                 pixelsBoughtCount = count;
-
                 releasedPic.write(imagePaths.mainPath,function(){
                   console.log("done writing new image after bought pixels!");
                   if(callbacks){
