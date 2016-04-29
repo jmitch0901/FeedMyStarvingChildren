@@ -105,22 +105,46 @@ body {
 
 }
 
-
-
-/*.social-icon img{
-  height:100px;
-}
-
-.social-icon{
-  margin: 0 auto;
-}
-
-#social-share-block {
-  padding:0 auto;
-}*/
-
-
 dialog{
 	width: 30%;
     transition: transform 200ms;
+}
+
+
+.navbar-fixed-top {
+    min-height: 80px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 80px;
+}
+
+
+@media (max-width: 767px) {
+    .navbar-nav > li > a {
+    line-height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;}
+}
+
+.navbar {
+  border:none;
+  font-size: 24pt;
+  background: url('/img/topnavbar.png') no-repeat;
+  background-color: white;
+}
+
+.navbar-nav h4 {
+  font-weight: 700;
+  padding-right: 24px;
+  line-height: 30px;
+  font-size: 24pt;
+}
+
+#total {
+  margin:0 auto;
+  color:lightgreen;
+  padding:12px;
 }

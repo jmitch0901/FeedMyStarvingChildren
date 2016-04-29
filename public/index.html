@@ -23,7 +23,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <!-- <link rel="stylesheet" href="styles/main.css"> -->
     <!-- <link type="text/css" rel="stylesheet" href="css/cssLayout.css" /> -->
-    <link rel="stylesheet" type="text/css" href="css/FMSC.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/FMSC.css"> -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <link type="text/css" rel="stylesheet" href="css/forms.css" />
     <link type="text/css" rel="stylesheet" href="css/animations.css" />
@@ -35,7 +35,10 @@
   <body ng-app="App">
 
     <ui-nav></ui-nav>
-    <ui-view></ui-view>
+    <div style="padding-top:70px;">
+          <ui-view></ui-view>
+    </div>
+
 
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>

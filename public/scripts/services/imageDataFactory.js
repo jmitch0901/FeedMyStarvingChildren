@@ -12,11 +12,8 @@ angular.module('App')
         callbacks(result.data.percentage);
 
       }, function(err){
-
-
+        console.error(err);
       });
-
-
     },
 
     getPixelInfo: function(x,y,callbacks){
@@ -35,8 +32,17 @@ angular.module('App')
         console.error(err);
         callbacks(err);
       });
-    }
+    },
 
+    getPixelsBoughtCount: function(callbacks){
+      $http.get('/api/pixels/bought')
+      .then(function(result){
+        callbacks(null,result.data);
+      }, function(err){
+        console.error(err);
+        callbacks(err);
+      });
+    }
   };
 
 

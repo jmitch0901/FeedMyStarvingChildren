@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('NavCtrl',['$scope','$location','UserFactory',function($scope,$location,UserFactory){
+.controller('NavCtrl',['$scope','$location','UserFactory','ImageDataFactory',function($scope,$location,UserFactory,ImageDataFactory){
 
   console.log('Nav Controller Added!');
 
@@ -11,6 +11,31 @@ angular.module('App')
 
   var aboutShown = false;
   var buyShown = false;
+
+  $scope.pixelsBought = "LOADING...";
+
+  function reloadBoughtCount(){
+    ImageDataFactory.getPixelsBoughtCount(function(err,result){
+
+      if(!err){
+        $scope.pixelsBought = result.bought.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");//Number(result.bought);
+      }
+
+    });
+  };
+
+  reloadBoughtCount();
+
+
+
+  setInterval(function(){
+
+    reloadBoughtCount();
+
+  },30000); //30 secs
+
+
+
 
   $scope.showAbout = function(){
     console.log('showing about!');
@@ -73,7 +98,10 @@ angular.module('App')
 
   UserFactory.makeMeRequest(function(err){
     if(err){
-      return console.error(err);
+      console.error(err);
+      return;
+
+
     }
 
     $scope.userName = UserFactory.me.firstname ? UserFactory.me.firstname : "";

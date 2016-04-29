@@ -103,6 +103,12 @@ var PixelHandler = {
     return percentage * 100;
   },
 
+  getPixelsBoughtCount: function(){
+
+    return new Number(pixelsBoughtCount);
+
+  },
+
   getPixelsRemainingCount: function(){
     return 1000000 - new Number(pixelsBoughtCount);
   },

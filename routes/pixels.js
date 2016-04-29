@@ -53,4 +53,11 @@ PixelRouter.get('/percentage',function(req,res){
 
 });
 
+PixelRouter.get('/bought',function(req,res){
+
+  res.json({bought: PixelHandler.getPixelsBoughtCount()});
+
+});
+
+
 module.exports = PixelRouter;
