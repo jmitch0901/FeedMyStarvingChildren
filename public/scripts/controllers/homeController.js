@@ -1,6 +1,23 @@
 angular.module('App')
-.controller('HomeCtrl',['$scope','$location','UserFactory','ImageDataFactory',function($scope,$location,UserFactory,ImageDataFactory){
+.controller('HomeCtrl',['$scope','$location','$state','UserFactory','ImageDataFactory',function($scope,$location,$state,UserFactory,ImageDataFactory){
   console.log("Home Controller Loaded");
+
+
+
+ $scope.UserFactory = UserFactory;
+
+
+ $scope.signIn = function(){
+   $state.go('login');
+ };
+
+ $scope.signOut = function(){
+   UserFactory.logout(function(err){
+     if(err){
+       console.error(err);
+     }
+   });
+ };
 
 
  var x = 0;

@@ -5,6 +5,7 @@ console.log('Initializing User Factory!');
 
   var user = {
     me: {},
+    wasGoingToDonate:false,
     isLoggedIn: false,
     login: function(email,password,callbacks){
       var self = this;

@@ -25,7 +25,14 @@ angular.module('App')
         return;
       }
 
-      $state.go('home');
+      if(UserFactory.wasGoingToDonate){
+        UserFactory.wasGoingToDonate = false;
+        $state.go('donate');
+      } else {
+          $state.go('home');
+      }
+
+
 
 
     });

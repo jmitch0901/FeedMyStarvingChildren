@@ -1,16 +1,24 @@
 angular.module('App')
-.controller('NavCtrl',['$scope','$location','UserFactory','ImageDataFactory',function($scope,$location,UserFactory,ImageDataFactory){
+.controller('NavCtrl',['$scope','$location','$state','UserFactory','ImageDataFactory',function($scope,$location,$state,UserFactory,ImageDataFactory){
 
   console.log('Nav Controller Added!');
 
 
+  $scope.doDonate = function(){
+
+    if(UserFactory.isLoggedIn){
+      $state.go('donate');
+    } else {
+      UserFactory.wasGoingToDonate = true;
+      $state.go('login');
+    }
+  };
 
 
   $(document).ready(function(){
     $('#about-slider').slideUp("fast");
     $('#buy-slider').slideUp("fast");
   });
-
 
   var aboutShown = false;
   var buyShown = false;
