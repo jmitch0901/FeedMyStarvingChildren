@@ -1,8 +1,70 @@
-<div class="well container" id="buyPixels">
 
+<div id="buy-success-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" style="text-align:center;"><strong>{{isSuccess ? "Successful Purchase!" : "Unsuccessful Purchase"}}</strong></h2>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="alert">
+          <p style="text-align:center;">
+            <strong>{{resultMessage}}</strong><br>
+            *feedmystarvingpixels.com is in beta mode, and has NOT conducted a real purchase.
+          </p>
+        </div>
+
+        <div ng-show="isSuccess" id="social-share-block">
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h2><strong>Share!</strong></h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <a class="social-icon" href="#"
+                socialshare
+                socialshare-provider="twitter"
+                socialshare-text="Help reveal the Million Pixel picture! Each pixel is only 22 cents! All proceeds will go to the Feed My Starving Children Campaign!"
+                socialshare-hashtags="fmsp, feedmystarvingpixels, fmsc, feedmystarvingchildren"
+                socialshare-url="https://www.feedmystarvingpixels.com">
+                <div class="thumbnail social">
+                  <img src="img/twitter.png">
+                </div>
+
+              </a>
+            </div>
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <a class="social-icon" href="#"
+                socialshare
+                socialshare-provider="facebook"
+                socialshare-type="feed"
+                socialshare-caption="www.feedmystarvingpixels.com"
+                socialshare-text="Feed My Starving Pixels Page!"
+                socialshare-description="Help reveal the Million Pixel picture! Each pixel is only 22 cents! All proceeds will go to the Feed My Starving Children Campaign!"
+                socialshare-url="https://www.feedmystarvingpixels.com">
+                <div class="thumbnail social">
+                      <img src="img/facebook.png">
+                </div>
+
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-primary btn-block" data-dismiss="modal">{{isSuccess ? "Awesome!" : "Got It."}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="photo well container" id="buyPixels">
     <div class="row">
-
-
       <div class="col-sm-2">
 
       </div>

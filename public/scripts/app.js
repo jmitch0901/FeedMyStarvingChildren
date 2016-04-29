@@ -16,6 +16,20 @@ angular.module('App',
     templateUrl:'../templates/home.html',
     controller: 'HomeCtrl'
   })
+  .state('about',{
+    url:'/about',
+    templateUrl:'../templates/about.html',
+    controller: 'AboutCtrl'
+  })
+  .state('donate',{
+    url: '/donate',
+    templateUrl:'../templates/buy.html',
+    controller: 'BuyCtrl'
+  })
+  .state('faqs',{
+    url:'/faqs',
+    templateUrl:'../templates/faqs.html'
+  })
   .state('login',{
     url:'/login',
     templateUrl: '../templates/login.html',

@@ -3,6 +3,9 @@ angular.module('App')
 
   console.log('Nav Controller Added!');
 
+
+
+
   $(document).ready(function(){
     $('#about-slider').slideUp("fast");
     $('#buy-slider').slideUp("fast");
