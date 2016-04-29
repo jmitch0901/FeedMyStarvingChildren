@@ -3,6 +3,8 @@ var express = require("express"),
     UserSchema = require('../schemas/user'),
     Middleware = require('./middleware'),
     passport = require("passport"),
+    PixelSchema = require('../schemas/pixel'),
+    Mongoose = require('mongoose'),
     PixelHandler = require("../factories/pixelHandlerv2"),
     Path = require("path");
 
@@ -38,6 +40,34 @@ UserRouter.get('/user/:id_user',Middleware.isLoggedIn,function(req,res){
     console.log("Got GET current user route!");
     res.json({me:req.user});
 });
+
+
+//TODO
+// UserRouter.get('/user/:id_user/bought',Middleware.isLoggedIn,function(req,res){
+//   var first = true;
+//   res.set('Content-Type', 'application/json');
+//   res.write('[')
+//   PixelSchema.find({isBought:true,'buyer.id':Mongoose.Types.ObjectId(req.user.id)},'pixel')
+//   .lean()
+//   .stream()
+//   .on('data',function(data){
+//     //console.log(data);
+//     if(first){
+//       first = false;
+//       res.write(JSON.stringify(data))
+//     } else
+//       res.write(","+JSON.stringify(data));
+//     //res.pipe(data);
+//   })
+//   .on('error',function(err){
+//     throw err;
+//   })
+//   .on('close',function(){
+//     res.write(']');
+//     res.end();
+//     console.log('Done getting my bought pixels');
+//   });
+// });
 
 //TODO
 // /me PUT

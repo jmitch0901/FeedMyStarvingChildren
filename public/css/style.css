@@ -91,7 +91,7 @@ body {
   margin-top: 12px;
 }
 
-#goal h1 {
+#goal {
   font-size: 36pt;
 }
 
@@ -129,6 +129,10 @@ dialog{
     padding-bottom: 10px;}
 }
 
+.nav.navbar-nav li{
+  font-weight: bold;
+}
+
 .navbar {
   border:none;
   font-size: 24pt;
@@ -139,12 +143,22 @@ dialog{
 .navbar-nav h4 {
   font-weight: 700;
   padding-right: 24px;
-  line-height: 30px;
+  line-height: 36px;
   font-size: 24pt;
+}
+
+.navbar-nav h4 strong{
+font-size: 24px;
+
 }
 
 #total {
   margin:0 auto;
   color:lightgreen;
   padding:12px;
+}
+
+
+#hamburger {
+  margin-top:20px;
 }
