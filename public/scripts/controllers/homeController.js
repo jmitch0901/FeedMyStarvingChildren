@@ -2,12 +2,14 @@ angular.module('App')
 .controller('HomeCtrl',['$scope','$location','$state','UserFactory','ImageDataFactory',function($scope,$location,$state,UserFactory,ImageDataFactory){
   console.log("Home Controller Loaded");
 
-
+  $('#navbar-tabs li').removeClass('active');
+  $('#home-tab').addClass('active');
 
  $scope.UserFactory = UserFactory;
 
 
  $scope.signIn = function(){
+   UserFactory.wasGoingToDonate = false;
    $state.go('login');
  };
 

@@ -24,12 +24,12 @@ angular.module('App',
   .state('donate',{
     url: '/donate',
     templateUrl:'../templates/buy.html',
-    controller: 'BuyCtrl',
-    cache:false
+    controller: 'BuyCtrl'
   })
   .state('faqs',{
     url:'/faqs',
-    templateUrl:'../templates/faqs.html'
+    templateUrl:'../templates/faqs.html',
+    controller: 'FaqsCtrl'
   })
   .state('login',{
     url:'/login',

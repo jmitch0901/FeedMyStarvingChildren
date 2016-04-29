@@ -4,12 +4,12 @@
 <div id="home" class="photo">
 
   <div class="row">
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
       <div id="goal" ng-show="percentage != -1" class="well">
-        <h1>We have reached <span><strong>{{percentage}}%</strong></span> to our goal!</h1>
+        <h1 style="font-size:34pt;">We have reached <span><strong>{{percentage}}%</strong></span> to our goal!</h1>
       </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 
       <div class="well">
 
@@ -22,7 +22,7 @@
         </div>
         <div ng-show="UserFactory.isLoggedIn">
           <h4>
-            Welcome {{UserFactory.me.firstname}} {{UserFactory.me.lastname}}!
+            Welcome <strong>{{UserFactory.me.firstname}} {{UserFactory.me.lastname}}</strong>!
           </h4>
           <button ng-click="signOut()" style="font-size:14pt;" class="btn btn-primary btn-large btn-block" type="button" name="button"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Sign Out</button>
         </div>

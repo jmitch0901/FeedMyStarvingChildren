@@ -1,6 +1,8 @@
 angular.module('App')
 .controller('BuyCtrl',['$scope','$http','$state','PaypalFactory',function($scope,$http,$state,PaypalFactory){
 
+  $('#navbar-tabs li').removeClass('active');
+  $('#donate-tab').addClass('active');
 
   console.log('Buy Controller Loaded');
   $scope.card = {
