@@ -48,7 +48,7 @@ var config = {
 Gulp.task('browser-sync',['nodemon'],function(){
   return BrowserSync.init(null,{
     proxy:"https://localhost:3000",
-    port:3001,
+    port:3002,
     notify:false
   });
 });
