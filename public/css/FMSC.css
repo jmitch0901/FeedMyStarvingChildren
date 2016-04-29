@@ -1,0 +1,171 @@
+/* CSS declarations go here */
+canvas, img {
+	display:block;
+	margin:3em auto; 
+	border:6px solid #f0f0f5;
+
+}
+canvas{
+    background: url("/resources/public.jpg") no-repeat; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
+  	height: auto;
+}
+
+
+#canvasCover{
+	max-height: 1000px;
+	max-width: 1000px;
+	min-height: 1000px;
+	min-height: 1000px;
+}
+
+/*logo settings */
+#logo{
+	padding: 1em;
+	width: 128px;
+	height: 49px;
+	padding-left: 2em;
+	border: 0;
+	
+}
+#headerlogo{
+	display:inline-flex;
+}
+
+#donation-form {
+	margin-left: 2em;
+}
+
+/* Setting for h2 headings */
+h2{
+	width: 100%;
+	padding-top: .25em;
+	padding-left: 1em;
+	padding-right: 2em;
+	vertical-align: bottom;
+}
+
+
+
+/* For Title and buttons */
+
+
+body {
+	font-size:14px;
+	background-color: #b3b3b3;
+	
+}
+
+
+/* nav bar */
+div.navdiv{
+	background-color: #236192;
+	border: none;
+}
+
+.nav_buttons{
+	margin-left: 5em;
+	border: none;	
+}
+
+.nav-pills {
+	padding-top: 1em;
+	font-size: 24px;
+}
+
+/* For Buttons */
+ul {
+	width: 100%;
+	padding-left: 4em;
+	padding-bottom:1em;
+}
+/* Changes the Base color the nav-pills nav buttons */
+a {
+	color: #fff;
+}
+/* Nav bar end */
+
+
+/* TitleBar */
+div.header {
+	margin-bottom: 0px;
+	border: none;
+}
+
+#nav-container{
+	background: url("/img/topnavbar.png") no-repeat;
+	background-color: #236192;
+	width: 100%;
+	height: auto;	
+
+}
+
+.header .image {
+	background: url("/resources/fmsc-logo.png") no-repeat;
+	background-size: 118px 49px;
+	width: 118px;
+	height: 49px;
+	position: relative;
+	padding-top: 2em;
+	margin-left: 55px;
+	margin-top: 10px;
+}
+
+.header .image, .header .text, .header .pixelsBought {
+	display:inline-flex;
+	padding-left: .5em;
+	padding-top: .35em;
+	padding-bottom: .05em;
+}
+
+.header .text{
+	font-size: 40px;
+	font-weight: bold;
+	padding-left: .70em;
+	padding-bottom:.15em;
+}
+
+.header .pixelsBought {
+	font-size: 20px;
+	font-weight: bold;
+	padding-left: 1em;
+	padding-bottom:.15em;
+	float: right;
+	color: #fff;
+}
+/* titlebar End */
+
+/* Intro Speech Information */
+#introspeech {
+		border-top: 50px; 
+		border-top-color: #236192;
+		padding-bottom: 2em;	
+		background: #236192;
+		margin-top: 1em;
+		
+}
+
+.words {
+	margin-left: 4em;
+	margin-right: 4em;
+	font-size: 18px;
+	padding-bottom: 1em;
+	padding-top: 1em;
+	color: white;
+	/*background: rgba(255, 255, 255, 0.35);
+	border-radius: 3px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);*/
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	top: 10px;
+	left: 0;
+	position: relative;
+	right: 0;
+	z-index: 2;
+
+
+
+
+}
+
+

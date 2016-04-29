@@ -23,6 +23,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <!-- <link rel="stylesheet" href="styles/main.css"> -->
     <!-- <link type="text/css" rel="stylesheet" href="css/cssLayout.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/FMSC.css">
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <link type="text/css" rel="stylesheet" href="css/forms.css" />
     <link type="text/css" rel="stylesheet" href="css/animations.css" />
@@ -32,6 +33,26 @@
 
   </head>
   <body ng-app="App">
+
+    <div class="container" id="nav-container">
+      <div class="header">
+          <div class="image"></div>
+          <div class="header text">One Million Meals Project</div>
+          <div class="pixelsBought">Total Pixels Bought: {{pixelsBought}} / 1,000,000</div>
+
+      </div>
+    </div>
+    <div class="navdiv"><!--sets the top bars backgrounds-->
+      <div class="nav_buttons">
+          <ul class="nav nav-pills" id="navbar">
+            <li  class='active' role="presentation"><a href="/">Home</a></li>
+            <li  role="presentation"><a href="DonatePage">Donate</a></li>
+            <li  role="presentation"><a href="FAQ">FAQ</a></li>
+            <li  role="presentation"><a href="Press">Press</a></li>
+            <li  role="presentation"><a href="https://www.fmsc.org">FeedMyStarvingChildren Website</a></li>
+        </ul>
+      </div>
+    </div>
 
     <ui-view></ui-view>
 
