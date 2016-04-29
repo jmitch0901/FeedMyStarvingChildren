@@ -18,13 +18,13 @@
           <h4>
             You are not signed in.
           </h4>
-          <button ng-click="signIn()" class="btn btn-primary btn-large btn-block" type="button" name="button">Sign In</button>
+          <button ng-click="signIn()" style="font-size:14pt;" class="btn btn-primary btn-large btn-block" type="button" name="button"><strong>Sign In/Register</strong> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
         <div ng-show="UserFactory.isLoggedIn">
           <h4>
             Welcome {{UserFactory.me.firstname}} {{UserFactory.me.lastname}}!
           </h4>
-          <button ng-click="signOut()" class="btn btn-primary btn-large btn-block" type="button" name="button"> Sign Out</button>
+          <button ng-click="signOut()" style="font-size:14pt;" class="btn btn-primary btn-large btn-block" type="button" name="button"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Sign Out</button>
         </div>
 
 

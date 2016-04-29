@@ -24,7 +24,8 @@ angular.module('App',
   .state('donate',{
     url: '/donate',
     templateUrl:'../templates/buy.html',
-    controller: 'BuyCtrl'
+    controller: 'BuyCtrl',
+    cache:false
   })
   .state('faqs',{
     url:'/faqs',

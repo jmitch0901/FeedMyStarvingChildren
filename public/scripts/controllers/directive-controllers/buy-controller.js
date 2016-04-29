@@ -1,5 +1,5 @@
 angular.module('App')
-.controller('BuyCtrl',['$scope','$http','PaypalFactory',function($scope,$http,PaypalFactory){
+.controller('BuyCtrl',['$scope','$http','$state','PaypalFactory',function($scope,$http,$state,PaypalFactory){
 
 
   console.log('Buy Controller Loaded');
@@ -94,14 +94,10 @@ angular.module('App')
       .addClass(isSuccessClass);
 
       $('#buy-success-modal').modal('show');
+
       $('#buy-success-modal').on('hidden.bs.modal',function(){
+        console.log('MODAL IS NOW HIDDEN');
         $('#purchase-btn').button('reset');
-      });
-
-
-
-
-      $('#buy-success-modal').on('hidden.bs.modal',function(){
         console.log("modal is hidden!");
         if($scope.isSuccess){
           $scope.message = '';
@@ -114,7 +110,7 @@ angular.module('App')
             cvv: ''
           };
 
-          $('#buy-slider').slideUp('slow');
+          $state.go('home');
         }
       });
 
