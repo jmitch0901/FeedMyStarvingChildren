@@ -5,7 +5,6 @@ angular.module('App',
 'ngCookies',
 'ui.router',
 '720kb.socialshare'
-
 ])
 .config(['$routeProvider','$stateProvider', '$urlRouterProvider',function($routeProvider,$stateProvider, $urlRouterProvider){
 

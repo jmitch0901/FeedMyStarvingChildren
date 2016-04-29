@@ -5,16 +5,32 @@
         <div class="header text">One Million Meals Project</div>
         <div class="pixelsBought">Total Pixels Bought: {{pixelsBought}} / 1,000,000</div>
 
+
     </div>
   </div>
   <div class="navdiv"><!--sets the top bars backgrounds-->
     <div class="nav_buttons">
         <ul class="nav nav-pills" id="navbar">
-          <!-- <li  class='active' role="presentation"><a href="/">Home</a></li> -->
-          <li  role="presentation"><a href="DonatePage">Donate</a></li>
-          <li  role="presentation"><a href="FAQ">FAQ</a></li>
-          <li  role="presentation"><a href="Press">Press</a></li>
-          <li  role="presentation"><a href="https://www.fmsc.org">FeedMyStarvingChildren Website</a></li>
+          <li><a ng-click="showAbout()">About</a></li>
+          <li><a ng-click="showDonate()">Donate</a></li>
       </ul>
     </div>
+    <div><a class="btn btn-info btn-lg" ng-show="!isLoggedIn" ui-sref="login">Login / Register</a></div>
+    <div ng-show="isLoggedIn" class="dropdown" >
+      <button style="white-space:normal;" class="btn btn-info btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Welcome, {{userName}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a ng-click="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="about-slider">
+    <about-slide></about-slide>
+  </div>
+
+  <div id="buy-slider">
+    <buy-slide></buy-slide>
   </div>

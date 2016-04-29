@@ -45,6 +45,7 @@ angular.module('App')
 
       if(err){
         console.log(err);
+        $('#register-btn').button('reset');
         $scope.errorMessage = err.error;
         return;
       }

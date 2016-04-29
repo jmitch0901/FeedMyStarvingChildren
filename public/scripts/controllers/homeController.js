@@ -65,8 +65,7 @@ $('#releasable-image').mousemove(function(e){
 });
 
 
-  $scope.isLoggedIn = UserFactory.isLoggedIn;
-  $scope.userName = UserFactory.me.firstname ? UserFactory.me.firstname : "";
+
   $scope.percentage = -1;
   ImageDataFactory.getPixelPercentage(function(percent){
     $scope.percentage = Number(percent).toFixed(2);
@@ -81,81 +80,5 @@ $('#releasable-image').mousemove(function(e){
   setInterval(function(){
     $scope.imgSrc = "/api/img?"+new Date().getTime();
   },30000);
-
-
-  $scope.logout = function(){
-    UserFactory.logout(function(err){
-      if(err){
-        return console.error(err);
-      }
-
-      $scope.isLoggedIn = UserFactory.isLoggedIn;
-      //$scope.showBuy();
-      $('#buy-slider').slideUp("fast");
-    });
-  };
-
-  UserFactory.makeMeRequest(function(err){
-    if(err){
-      return console.error(err);
-    }
-
-    $scope.userName = UserFactory.me.firstname ? UserFactory.me.firstname : "";
-    $scope.isLoggedIn = UserFactory.isLoggedIn;
-
-  });
-
-
-  $(document).ready(function(){
-      $('#about-slider').slideUp("fast");
-      $('#buy-slider').slideUp("fast");
-  });
-
-
-  var aboutShown = false;
-  var buyShown = false;
-
-  $scope.showAbout = function(){
-    console.log('showing about!');
-    aboutShown = !aboutShown;
-
-    if(aboutShown){
-      if(buyShown){
-        $('#buy-slider').slideUp('fast',function(){
-          buyShown = false;
-          $('#about-slider').slideDown('slow');
-        });
-      } else {
-        $('#about-slider').slideDown('slow');
-      }
-    } else {
-      $('#about-slider').slideUp('slow');
-    }
-
-  };
-
-  $scope.showBuy = function(){
-
-    if(!UserFactory.isLoggedIn){
-      $location.path('/login');
-      return;
-    }
-
-    buyShown = !buyShown;
-
-    if(buyShown){
-      if(aboutShown){
-        $('#about-slider').slideUp('fast',function(){
-          aboutShown = false;
-          $('#buy-slider').slideDown('slow');
-        });
-      } else {
-        $('#buy-slider').slideDown('slow');
-      }
-    } else {
-        $('#buy-slider').slideUp('slow');
-    }
-
-  };
 
 }]);
