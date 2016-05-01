@@ -1,6 +1,11 @@
-
+<div ng-show="UserFactory.wasGoingToDonate" class="container page-header">
+	<h1 style="color:white;font-size:24pt;">Please sign in to continue...</h1>
+</div>
 <div id="login" style="margin-top:26px; padding:26px;" class="login_page">
-
+	<!-- <button ui-sref="home" style="margin:6px; margin-top-26px;display:block;margin-top:12px; font-size:16pt;" type="button" class="btn btn-default btn-large" aria-label="Left Align">
+		<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+		<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back to Home Page
+	</button> -->
 
 
 <form ng-enter="login()">
@@ -8,7 +13,7 @@
 
 		<div class="loginForm">
 
-			<div class="thumbnail">
+			<div class="thumbnail well">
 				<img src="img/FMSClogo.png"><p>
 			</div>
 			<h2>Welcome! Please login.</h2>
@@ -24,10 +29,7 @@
 				Click <a ui-sref="register">here</a> to sign up.</br>
 
 		</div>
-		<button ui-sref="home" style="margin:6px;display:block;margin-top:12px" type="button" class="btn btn-default btn-large" aria-label="Left Align">
-			 <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-			<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back to Home Page
-		</button>
+
 	</div>
 
 </form>

@@ -25,15 +25,18 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul id="navbar-tabs" class="nav navbar-nav">
-          <li class="active"><a ui-sref="home">Home</a></li>
-          <li><a ui-sref="about">About</a></li>
-          <li><a ng-click="doDonate()">Donate</a></li>
-          <li><a ui-sref="faqs">FAQs</a></li>
+          <li id="home-tab" class="active"><a ui-sref="home">Home</a></li>
+          <li id="about-tab"><a ui-sref="about">About</a></li>
+          <li id="donate-tab"><a ng-click="doDonate()">Donate</a></li>
+          <li id="faqs-tab"><a ui-sref="faqs">FAQs</a></li>
         </ul>
 
-        <div class="nav navbar-nav navbar-right">
-          <div id="total" class="navbar-header">
-                  <h4><strong>Total Pixels Bought: </strong><span class="label label-default">{{pixelsBought}} / 1,000,000</span></h4>
+        <div class="nav navbar-nav navbar-right hidden-md hidden-sm">
+          <div id="total" class="navbar-header" style="padding-top: 8px;" >
+            <div style="padding:0px 8px 0px 8px; margin:0;" class="well">
+              <h4><strong>Total Pixels Bought:</strong>  <span class="label label-default">{{pixelsBought}} / 1,000,000</span></h4>
+            </div>
+
           </div>
 
           <!-- <li class="dropdown">

@@ -68,7 +68,7 @@ body {
   z-index: 1;
   background: #FFFFFF;
   max-width: 1250px;
-  margin: 24px auto 100px;
+  margin: 48px auto 100px;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -152,7 +152,6 @@ font-size: 24px;
 
 #total {
   margin:0 auto;
-  color:lightgreen;
   padding:12px;
 }
 

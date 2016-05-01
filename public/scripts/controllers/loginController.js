@@ -7,6 +7,8 @@ angular.module('App')
   //   $window.location.href = 'https://localhost:3000/#/login'
   // }
 
+  $scope.UserFactory = UserFactory;
+
   $scope.email = "";
   $scope.password = "";
   $scope.errorMessage = "";
