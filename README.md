@@ -25,7 +25,9 @@
 
 ##Cloning the Project
 
-1. Clone this project on your Mac/PC.
+1. Clone this project on your Mac/PC:
+
+    `git clone https://github.com/jmitch0901/FeedMyStarvingChildren.git`
 
 2. Open another terminal/command prompt window.
 
