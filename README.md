@@ -8,7 +8,8 @@
 
 >   The Feed My Starving Pixels project operates on a MEAN stack. You must ensure NodeJS and 
 > MongoDB are properly installed on your computer. After each installation, ensure that 
-> you have access to the **node** and **mongod** command. If there are issues, check your system's enviroment variables!
+> you have access to the **node** and **mongod** command. If your system doesn't recognize these commands, check your system's 
+> enviroment variables!
 
 1. Download and install [NodeJS](https://nodejs.org/en/ "Go to NodeJS.org") installed on your computer. The *Recommended for Most Users* version will do.
 
@@ -55,6 +56,7 @@
 ####SSL with OpenSSL
 
 1. Create a directory in the project's root directory name *'certs'*.
+ 
 2. Follow the directions on [OpenSSL's](https://www.openssl.org/) website for creating a **certificate** and **private key**. Create the following files **WITH** exact naming:
     - **certificate.pem**
     - **private.key**
