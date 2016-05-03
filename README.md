@@ -30,7 +30,15 @@
 
 3. Navigate to project's main directory within terminal/command prompt.
 
-4. Install project dependencies:
+4. Install Bower:
+
+    ###Mac:
+        `sudo npm install -g bower`
+        
+    ###Windows:
+        `npm install -g bower`
+
+5. Install project dependencies:
 
     ###Mac: 
       `sudo npm install & bower install`
@@ -44,8 +52,29 @@
 > we need to ensure we have our pictures named and in the correct folder for this 
 > app to run effectively. 
 
-- ###SSL with OpenSSL
+####SSL with OpenSSL
 
 1. Create a directory in the project's root directory name *'certs'*.
 
-2. Follow the directions on [OpenSSL's]https://www.openssl.org/ website. Create 
+2. Follow the directions on [OpenSSL's](https://www.openssl.org/) website. Create the following files **WITH** exact naming:
+
+    - **certificate.pem**
+    - **private.key**
+    
+3. Copy these files into the *'certs'* folder you created earlier.
+
+####Creating the Images
+>   There must be exactly **3** images withing the /img folder.
+> (**Not the one in the public folder, but in the root directory**).
+
+Ensure the following 3 image files are in the /img directory: 
+ 1. **secret-image.png**
+
+ 2. **releasable-image.png**
+ 
+ 3. **releasable-image-backup.png**
+
+If you are missing picture 3, all you need to do is simply make a copy of image 2, and name it to **releasable-image-backup.png**.
+ 
+    
+    
