@@ -7,7 +7,7 @@ var Mongoose = require("mongoose"),
 var imagePaths = {
   secretPath : Path.resolve(__dirname+'/../img/secret-image.png'),
   mainPath: Path.resolve(__dirname+'/../img/releasable-image.png'),
-  backupPath : Path.resolve(__dirname+'/../img/releasable-image-2.png')
+  backupPath : Path.resolve(__dirname+'/../img/releasable-image-backup.png')
 };
 
 var intervalTime = 30000 * 2; //1 minute
@@ -33,7 +33,7 @@ function initializeInterval(){
       }
 
       isEditing = true;
-      return reloadImage(function(){
+      return reloadImagev2(function(){
         isEditing = false;
       });
     });
@@ -41,59 +41,48 @@ function initializeInterval(){
   },intervalTime);
 };
 
-function reloadImage(callbacks){
+function reloadImagev2(callbacks){
 
-     return Jimp.read(imagePaths.secretPath)
-    .then(function(secretPic){
+  return Jimp.read(imagePaths.secretPath)
+  .then(function(secretPic){
 
-        console.log("Reading secret image!");
+    var count = 0;
 
-        Jimp.read(imagePaths.mainPath)
-        .then(function(releasedPic){
+    var copy = secretPic.clone();
+    PixelSchema.find({})
+    .lean()
+    .stream()
+    .on('error',function(err){
+      console.error(err);
+      //throw err;
+    })
+    .on('data',function(pixelObj){
 
-            console.log("Writing to Releasable image!");
-            var count = 0;
+      if(!pixelObj.isBought){
+        count++;
+        copy.setPixelColor(0xFFFFFFFF,pixelObj.pixel.x,pixelObj.pixel.y);
+      }
+    })
+    .on('close',function(){
+      console.log('Done streaming pixel data!');
+      percentage = count / 1000000.0;
+      pixelsBoughtCount = count;
 
-
-            PixelSchema.find({})
-              .lean()
-              .stream()
-              .on('data',function(pixelObj){
-
-                if(pixelObj.isBought){
-                  count++;
-                }
-
-                  var hex = pixelObj.isBought ? secretPic.getPixelColor(pixelObj.pixel.x,pixelObj.pixel.y)
-                                              : 0xFFFFFFFF;
-
-                  releasedPic.setPixelColor(hex,pixelObj.pixel.x,pixelObj.pixel.y);
-              })
-              .on('error',function(err){
-                console.error("Error streaming the data!");
-                console.error(err);
-              })
-              .on('close',function(){
-                console.log('Done streaming the pixel data!');
-                percentage = count / 1000000.0;
-                pixelsBoughtCount = count;
-
-                releasedPic.write(imagePaths.mainPath,function(){
-                  console.log("done writing new image after bought pixels!");
-                  if(callbacks){
-                    return callbacks();
-                  }
-              });
-            });
-        });
+      copy.write(imagePaths.mainPath,function(){
+        console.log("done writing new image after bought pixels!");
+        if(callbacks){
+          return callbacks();
+        }
+      });
     });
-};
 
+  });
+};
 
 var PixelHandler = {
 
   init: function(){
-    return reloadImage(initializeInterval);
+    return reloadImagev2(initializeInterval);
   },
   getReleasableImagePath: function(){
     return isEditing ? imagePaths.mainPath : imagePaths.backupPath;
