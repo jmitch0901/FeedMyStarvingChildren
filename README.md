@@ -1,9 +1,14 @@
 #Feed My Starving Pixels Project
+![alt text](https://www.fmsc.org/image/09-template-images/fmsc-logo.png "Feed My Starving Children") 
 
 ##Installation Prerequisites
 
 ![alt text](http://appv2.asustor.com/uploadIcons/0020_13878_1388394236_mongodb.png "MongoDB") 
 ![alt text](https://worldvectorlogo.com/logos/nodejs-icon.svg "NodeJS") 
+
+>   The Feed My Starving Pixels project operates on a MEAN stack. You must ensure NodeJS and 
+> MongoDB are properly installed on your computer. After each installation, ensure that 
+> you have access to the **node** and **mongod** command. If there are issues, check your system's enviroment variables!
 
 1. Download and install [NodeJS](https://nodejs.org/en/ "Go to NodeJS.org") installed on your computer. The *Recommended for Most Users* version will do.
 
