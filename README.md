@@ -16,19 +16,17 @@
     
     ###Windows: 
       `mongod`
-      
-4. Open a new terminal/command prompt window.
 
-5. Clone this project on your Mac/PC.
+##Cloning the Project
+- Clone this project on your Mac/PC.
 
-6. Navigate to project's main directory within terminal/command prompt.
+- Navigate to project's main directory within terminal/command prompt.
 
-7. Install project dependencies:
+- Install project dependencies:
 
     ###Mac: 
       `sudo npm install & bower install`
     
     ###Windows: 
       `npm install & bower install`
-
     
