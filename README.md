@@ -76,7 +76,19 @@ Ensure the following 3 image files are in the /img directory:
  3. **releasable-image-backup.png**
 
 If you are missing picture 3, all you need to do is simply make a copy of image 2, and name it to **releasable-image-backup.png**.
- 
+
+###Initializing the Database
+>   Mongo needs the default entries for each pixel value before the app can run. Within the /seeds directory,
+> there is a mongo script which will initialize the database.
+
+1. Navigate to the project's /seeds directory.
+
+2. Type `mongo seedPixels.js`
+
+3. **Be Patient.** It is inserting 1,000,000 entries and could take roughly *10 minutes* to complete.
+
+4. Once the cursor for your terminal/command prompt is released, the initialization of the database is complete.
+
 ###Running the App
 >   Ensure the **mongod** process is still running and in a separate terminal/command window.
 
