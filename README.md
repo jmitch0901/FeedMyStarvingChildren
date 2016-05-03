@@ -75,5 +75,13 @@ Ensure the following 3 image files are in the /img directory:
 
 If you are missing picture 3, all you need to do is simply make a copy of image 2, and name it to **releasable-image-backup.png**.
  
+###Running the App
+>   Ensure the **mongod** process is still running and in a separate terminal/command window.
+
+1. In a new terminal/command prompt window, navigate to the project's root directory.
+
+2. Type `node app.js`.
+
+3. Open up your browser, and go to **http://localhost:8080** (You can also go to **https://localhost:3000** for https traffic).
     
     
