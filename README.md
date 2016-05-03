@@ -34,10 +34,10 @@
 4. Install Bower:
 
     ###Mac:
-        `sudo npm install -g bower`
+    `sudo npm install -g bower`
         
     ###Windows:
-        `npm install -g bower`
+    `npm install -g bower`
 
 5. Install project dependencies:
 
