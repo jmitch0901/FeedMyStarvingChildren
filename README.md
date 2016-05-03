@@ -55,12 +55,9 @@
 ####SSL with OpenSSL
 
 1. Create a directory in the project's root directory name *'certs'*.
-
-2. Follow the directions on [OpenSSL's](https://www.openssl.org/) website. Create the following files **WITH** exact naming:
-
+2. Follow the directions on [OpenSSL's](https://www.openssl.org/) website for creating a **certificate** and **private key**. Create the following files **WITH** exact naming:
     - **certificate.pem**
     - **private.key**
-    
 3. Copy these files into the *'certs'* folder you created earlier.
 
 ####Creating the Images
