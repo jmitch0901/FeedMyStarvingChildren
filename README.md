@@ -37,4 +37,15 @@
     
     ###Windows: 
       `npm install & bower install`
-    
+
+##(*IMPORTANT!*) OpenSSL and Images
+>   This project requires SSL certificates to run. They do not have to be official.
+> You can just use OpenSSL to create a quick certificate to run the project. Also,
+> we need to ensure we have our pictures named and in the correct folder for this 
+> app to run effectively. 
+
+- ###SSL with OpenSSL
+
+1. Create a directory in the project's root directory name *'certs'*.
+
+2. Follow the directions on [OpenSSL's]https://www.openssl.org/ website. Create 
