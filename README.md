@@ -65,7 +65,7 @@
 3. Copy these files into the *'certs'* folder you created earlier.
 
 ####Creating the Images
->   There must be exactly **3** images withing the /img folder.
+>   There must be at least **2** images withing the /img folder.
 > (**Not the one in the public folder, but in the root directory**).
 
 Ensure the following 2 image files are in the /img directory: 
