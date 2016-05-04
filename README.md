@@ -33,13 +33,13 @@
 
 3. Navigate to project's main directory within terminal/command prompt.
 
-4. Install Bower:
+4. Install Bower and Gulp Globally:
 
     ###Mac:
-    `sudo npm install -g bower`
+    `sudo npm install -g bower gulp`
         
     ###Windows:
-    `npm install -g bower`
+    `npm install -g bower gulp`
 
 5. Install project dependencies:
 
@@ -92,8 +92,10 @@ If you are missing picture 2, all you need to do is simply make a copy of image 
 
 1. In a new terminal/command prompt window, navigate to the project's root directory.
 
-2. Type `node app.js`.
+2. Type `gulp scripts` to build the Client Javascript code.
 
-3. Open up your browser, and go to **http://localhost:8080** (You can also go to **https://localhost:3000** for https traffic).
+3. Type `node app.js`.
+
+4. Open up your browser, and go to **http://localhost:8080** (You can also go to **https://localhost:3000** for https traffic).
     
     
