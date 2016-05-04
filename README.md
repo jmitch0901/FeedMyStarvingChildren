@@ -68,14 +68,12 @@
 >   There must be exactly **3** images withing the /img folder.
 > (**Not the one in the public folder, but in the root directory**).
 
-Ensure the following 3 image files are in the /img directory: 
+Ensure the following 2 image files are in the /img directory: 
  1. **secret-image.png**
 
  2. **releasable-image.png**
- 
- 3. **releasable-image-backup.png**
 
-If you are missing picture 3, all you need to do is simply make a copy of image 2, and name it to **releasable-image-backup.png**.
+If you are missing picture 2, all you need to do is simply make a copy of image 1, and name it to **releasable-image.png**.
 
 ###Initializing the Database
 >   Mongo needs the default entries for each pixel value before the app can run. Within the /seeds directory,
