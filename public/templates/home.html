@@ -2,21 +2,31 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" style="text-align:center;"><strong>{{isSuccess ? "Successful Purchase!" : "Unsuccessful Purchase"}}</strong></h2>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 class="modal-title" style="text-align:center;">
+          <strong
+            >{{isSuccess ? "Successful Purchase!" : "Unsuccessful
+            Purchase"}}</strong
+          >
+        </h2>
       </div>
       <div class="modal-body">
-
-
         <div class="alert">
           <p style="text-align:center;">
-            <strong>{{resultMessage}}</strong><br>
-            *feedmystarvingpixels.com is in beta mode, and has NOT conducted a real purchase.
+            <strong>{{resultMessage}}</strong><br />
+            *feedmystarvingpixels.com is in beta mode, and has NOT conducted a
+            real purchase.
           </p>
         </div>
 
         <div ng-show="isSuccess" id="social-share-block">
-
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <h2><strong>Share!</strong></h2>
@@ -24,84 +34,106 @@
           </div>
           <div class="row">
             <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <a class="social-icon" href="#"
+              <a
+                class="social-icon"
+                href="#"
                 socialshare
                 socialshare-provider="twitter"
                 socialshare-text="Help reveal the Million Pixel picture! Each pixel is only 22 cents! All proceeds will go to the Feed My Starving Children Campaign!"
                 socialshare-hashtags="fmsp, feedmystarvingpixels, fmsc, feedmystarvingchildren"
-                socialshare-url="https://www.feedmystarvingpixels.com">
+                socialshare-url="https://www.feedmystarvingpixels.com"
+              >
                 <div class="thumbnail social">
-                  <img src="img/twitter.png">
+                  <img src="img/twitter.png" />
                 </div>
-
               </a>
             </div>
             <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <a class="social-icon" href="#"
+              <a
+                class="social-icon"
+                href="#"
                 socialshare
                 socialshare-provider="facebook"
                 socialshare-type="feed"
                 socialshare-caption="www.feedmystarvingpixels.com"
                 socialshare-text="Feed My Starving Pixels Page!"
                 socialshare-description="Help reveal the Million Pixel picture! Each pixel is only 22 cents! All proceeds will go to the Feed My Starving Children Campaign!"
-                socialshare-url="https://www.feedmystarvingpixels.com">
+                socialshare-url="https://www.feedmystarvingpixels.com"
+              >
                 <div class="thumbnail social">
-                      <img src="img/facebook.png">
+                  <img src="img/facebook.png" />
                 </div>
-
               </a>
             </div>
-
           </div>
-
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-lg btn-primary btn-block" data-dismiss="modal">{{isSuccess ? "Awesome!" : "Got It."}}</button>
+        <button
+          type="button"
+          class="btn btn-lg btn-primary btn-block"
+          data-dismiss="modal"
+        >
+          {{isSuccess ? "Awesome!" : "Got It."}}
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-
 <div id="home" class="photo">
-
-
-
   <div class="page-header">
-      <div style="margin:0; padding:16px;" class="well">
-        <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div style="margin:auto;" class="thumbnail">
-                <img src="img/FMSClogo.png" alt="" />
-            </div>
-
-          </div>
-          <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12">
-              <h1>Feed My Starving Pixels</h1>
+    <div style="margin:0; padding:16px;" class="well">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <div style="margin:auto;" class="thumbnail">
+            <img src="img/FMSClogo.png" alt="" />
           </div>
         </div>
-
+        <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12">
+          <h1>Feed My Starving Pixels</h1>
+        </div>
       </div>
+    </div>
   </div>
-    <div id="goal" ng-show="percentage != -1" class="jumbotron">
-      <h1>We have reached <span><strong>{{percentage}}%</strong></span> to our goal!</h1>
-    </div>
+  <div id="goal" ng-show="percentage != -1" class="jumbotron">
+    <h1>
+      We have reached <span><strong>{{percentage}}%</strong></span> to our goal!
+    </h1>
+  </div>
   <button class="btn btn-lg btn-primary" ng-click="showAbout()">About</button>
-  <button class="btn btn-lg btn-primary" ng-click="showBuy()">Buy Pixels</button><p>
-    <div style="display:inline; margin-botton:10px;"><a class="btn btn-info btn-lg" ng-show="!isLoggedIn" ui-sref="login">Login / Register</a></div>
-    <div style="display:inline; margin-bottom:10px;" ng-show="isLoggedIn" class="dropdown" >
-      <button style="white-space:normal;" class="btn btn-info btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Welcome, {{userName}}
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <!-- <li><a href="#">Edit Account</a></li>
+  <button class="btn btn-lg btn-primary" ng-click="showBuy()">
+    Buy Pixels
+  </button>
+  <p></p>
+  <div style="display:inline; margin-bottom:10px;">
+    <a class="btn btn-info btn-lg" ng-show="!isLoggedIn" ui-sref="login"
+      >Login / Register</a
+    >
+  </div>
+  <div
+    style="display:inline; margin-bottom:10px;"
+    ng-show="isLoggedIn"
+    class="dropdown"
+  >
+    <button
+      style="white-space:normal;"
+      class="btn btn-info btn-lg dropdown-toggle"
+      type="button"
+      id="dropdownMenu1"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="true"
+    >
+      Welcome, {{userName}}
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <!-- <li><a href="#">Edit Account</a></li>
         <li role="separator" class="divider"></li> -->
-        <li><a ng-click="logout()">Logout</a></li>
-      </ul>
-    </div>
-
+      <li><a ng-click="logout()">Logout</a></li>
+    </ul>
+  </div>
 
   <div style="margin-top:10px;">
     <div id="about-slider">
@@ -113,20 +145,29 @@
     </div>
   </div>
 
-
-
-
-
   <div id="main-image">
-      <a id="image-tooltip" data-placement="right"  data-toggle="popover"></a>
-      <img id="releasable-image" ng-src="{{imgSrc}}">
+    <a id="image-tooltip" data-placement="right" data-toggle="popover"></a>
+    <img id="releasable-image" ng-src="{{imgSrc}}" />
   </div>
 
-
   <div style="margin:12px;" align="right">
-    <a target="_blank" href="https://www.facebook.com/ISUFMSC"><img src="img/facebook.png" style="height:25px;"></a>
-    <a target="_blank" href="https://twitter.com/fmsc_org?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="img/twitter.png" style="height:25px;"></a>
-    <a target="_blank" href="https://www.linkedin.com/company/feed-my-starving-children"><img src="img/linkedin.png" style="height:25px;"></a>
-    <a target="_blank" href="https://plus.google.com/+feedmystarvingchildren/videos"><img src="img/googleplus.png" style="height:25px;"></a>
+    <a target="_blank" href="https://www.facebook.com/ISUFMSC"
+      ><img src="img/facebook.png" style="height:25px;"
+    /></a>
+    <a
+      target="_blank"
+      href="https://twitter.com/fmsc_org?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+      ><img src="img/twitter.png" style="height:25px;"
+    /></a>
+    <a
+      target="_blank"
+      href="https://www.linkedin.com/company/feed-my-starving-children"
+      ><img src="img/linkedin.png" style="height:25px;"
+    /></a>
+    <a
+      target="_blank"
+      href="https://plus.google.com/+feedmystarvingchildren/videos"
+      ><img src="img/googleplus.png" style="height:25px;"
+    /></a>
   </div>
 </div>

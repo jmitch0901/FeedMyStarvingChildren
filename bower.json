@@ -1,22 +1,12 @@
 {
   "name": "feed-my-starving-pixels",
   "homepage": "https://github.com/jmitch0901/FeedMyStarvingChildren",
-  "authors": [
-    "jmitch <jmitch0901@gmail.com>"
-  ],
+  "authors": ["jmitch <jmitch0901@gmail.com>"],
   "description": "",
   "main": "index.html",
-  "moduleType": [
-    "node"
-  ],
+  "moduleType": ["node"],
   "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
     "jquery": "^2.2.2",
     "angular": "^1.5.3",
@@ -27,7 +17,7 @@
     "bootstrap": "^3.3.6",
     "angular-resource": "^1.5.3",
     "socket.io": "^1.4.5",
-    "angular-modal-service": "^0.9.10",
+    "angular-modal-service": "^0.10.1",
     "underscore": "^1.8.3",
     "angular-ui-router": "^0.2.18",
     "angular-socialshare": "angularjs-socialshare#^2.1.2"
