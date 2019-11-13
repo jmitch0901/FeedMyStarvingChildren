@@ -1,14 +1,9 @@
-node_modules
 node_modules/
-certs
-certs/
-dist
+img/releasable*
 dist/
 public/bower_components/
 .DS_Store
 .DS_Store~
-img/
-img/*
 public/app.min.js
 */*.min.*
 *.log

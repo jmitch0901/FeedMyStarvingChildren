@@ -17,8 +17,7 @@
     "gulp-removelogs": "^0.1.0",
     "jimp": "^0.2.24",
     "json-stream": "^1.0.0",
-    "lodash": "^4.6.1",
-    "mongoose": "^4.4.10",
+    "mongoose": "^5.7.10",
     "mongoose-random": "^0.1.1",
     "mongoose-simple-random": "^0.3.3",
     "passport": "^0.3.2",
@@ -28,7 +27,6 @@
     "paypal-rest-sdk": "^1.6.8",
     "profanity-filter": "^0.2.1",
     "profanity-util": "0.0.5",
-    "socket.io": "^1.4.5",
     "swearjar": "^0.1.2",
     "underscore": "^1.8.3"
   },
