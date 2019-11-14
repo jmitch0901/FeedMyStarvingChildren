@@ -48,17 +48,15 @@
 
 `npm install & bower install`
 
-## (_IMPORTANT!_) OpenSSL and Images
+## (_IMPORTANT!_) Images
 
-> This project requires SSL certificates to run. They do not have to be official.
-
-> You can just use OpenSSL to create a quick certificate to run the project. Also, we need to ensure we have our pictures named and in the correct folder for this app to run effectively.
+> We need to ensure we have our pictures named and in the correct folder for this app to run effectively.
 
 #### Creating the Images
 
-> There must be **2** image files within the /img folder, **exactly 1000x1000px**.
+> There must be **3** image files within the /img folder, **exactly 1000x1000px**.
 
-Ensure the following 2 image files are in the /img directory:
+Ensure the following 3 image files are in the /img directory (they can all be the same image):
 
 1.  **secret-image.png**
 
