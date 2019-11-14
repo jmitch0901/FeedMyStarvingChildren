@@ -1,11 +1,11 @@
-var express = require("express"),
+var express = require('express'),
   UserRouter = express.Router({ mergeParams: true }),
-  UserSchema = require("../schemas/user"),
-  Middleware = require("./middleware"),
-  PixelHandler = require("../factories/pixelHandlerv2");
+  UserSchema = require('../schemas/user'),
+  Middleware = require('./middleware'),
+  PixelHandler = require('../factories/pixelHandlerv2');
 
 UserRouter.post(
-  "/user",
+  '/user',
   Middleware.checkUserRegistry,
   Middleware.filterNames,
   function(req, res) {
@@ -16,34 +16,30 @@ UserRouter.post(
       email: userBody.email
     };
 
-    console.log("Registering user email: " + user.email);
-
     UserSchema.register(user, userBody.password, function(err, result) {
       if (err) {
-        console.log(err);
         return res.json({ error: err });
       }
       res.json({
         success:
-          "You have successfully registered! You can now login with a POST request to /login."
+          'You have successfully registered! You can now login with a POST request to /login.'
       });
     });
   }
 );
 
 // /me GET
-UserRouter.get("/user/:id_user", Middleware.isLoggedIn, function(req, res) {
-  console.log("Got GET current user route!");
+UserRouter.get('/user/:id_user', Middleware.isLoggedIn, function(req, res) {
   res.json({ me: req.user });
 });
 
 // /me PUT
-UserRouter.put("/user/:id_user", function(req, res) {
-  res.send("Hit user_id put route.");
+UserRouter.put('/user/:id_user', function(req, res) {
+  res.send('Hit user_id put route.');
 });
 
 UserRouter.post(
-  "/user/:id_user/buy",
+  '/user/:id_user/buy',
   Middleware.isLoggedIn,
   Middleware.validateBuyPixels,
   Middleware.filterProfanity,
@@ -54,16 +50,15 @@ UserRouter.post(
       req.body.amount,
       function(err) {
         if (err) {
-          console.log(err);
           res.json({ error: err });
           return;
         }
         res.json({
           success: true,
           message:
-            "You have successfully purchased " +
+            'You have successfully purchased ' +
             req.body.amount +
-            " pixels! Your payment is now being processed. Your pixels will appear afterwards. Thank you!"
+            ' pixels! Your payment is now being processed. Your pixels will appear afterwards. Thank you!'
         });
       }
     );
@@ -71,12 +66,12 @@ UserRouter.post(
 );
 
 //REDIRECTION
-UserRouter.get("/me", Middleware.isLoggedIn, function(req, res) {
-  res.redirect("user/" + req.user._id);
+UserRouter.get('/me', Middleware.isLoggedIn, function(req, res) {
+  res.redirect('user/' + req.user._id);
 });
 
-UserRouter.put("/me", Middleware.isLoggedIn, function(req, res) {
-  res.redirect("user/" + req.user._id);
+UserRouter.put('/me', Middleware.isLoggedIn, function(req, res) {
+  res.redirect('user/' + req.user._id);
 });
 
 module.exports = UserRouter;

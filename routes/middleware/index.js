@@ -1,28 +1,26 @@
-var Passport = require("passport"),
-  Express = require("express"),
-  PixelHandler = require("../../factories/pixelHandlerv2"),
-  UserSchema = require("../../schemas/user"),
-  SwearJar = require("swearjar"),
-  Mongoose = require("mongoose");
+var Passport = require('passport'),
+  Express = require('express'),
+  PixelHandler = require('../../factories/pixelHandlerv2'),
+  UserSchema = require('../../schemas/user'),
+  SwearJar = require('swearjar'),
+  Mongoose = require('mongoose');
 
 var Middleware = {
   isLoggedIn: function(req, res, next) {
     if (req.isAuthenticated()) {
-      console.log("YOU ARE AUTHENTICATED!");
       return next();
     }
-    console.log("you are not authenticated");
+
     res.status(401);
-    res.json({ error: "Not Authenticated." });
+    res.json({ error: 'Not Authenticated.' });
   },
   checkUserRegistry: function(req, res, next) {
     if (req.isAuthenticated()) {
       res.status(403);
-      return res.json({ error: "You must logout first!" });
+      return res.json({ error: 'You must logout first!' });
     }
-    console.log(req.body);
+
     var potentialUser = req.body.user;
-    // console.log(req.body);
 
     if (
       !potentialUser ||
@@ -32,8 +30,8 @@ var Middleware = {
       !potentialUser.password
     ) {
       res.status(400);
-      console.log("Didnt send me good params!");
-      return res.json({ error: "Bad POST parameters while registering." });
+
+      return res.json({ error: 'Bad POST parameters while registering.' });
     }
 
     UserSchema.find({ email: potentialUser.email }, function(err, result) {
@@ -44,7 +42,7 @@ var Middleware = {
 
       if (result.length > 0) {
         res.status(409);
-        return res.json({ error: "Someone with that email already exists!" });
+        return res.json({ error: 'Someone with that email already exists!' });
       }
 
       next();
@@ -57,7 +55,7 @@ var Middleware = {
     if (!card) {
       return res.json(400, {
         success: false,
-        error: "You must provide a credit card."
+        error: 'You must provide a credit card.'
       });
     }
 
@@ -65,7 +63,7 @@ var Middleware = {
       return res.json(400, {
         success: false,
         error:
-          "You must provide a pixel (number) amount of either 10 or greater."
+          'You must provide a pixel (number) amount of either 10 or greater.'
       });
     }
 
@@ -75,7 +73,7 @@ var Middleware = {
       return res.json(400, {
         success: false,
         error:
-          "The purchase minimum is 10, and the maximum is 1000. Please ensure it is within this range!"
+          'The purchase minimum is 10, and the maximum is 1000. Please ensure it is within this range!'
       });
     }
 
@@ -85,9 +83,9 @@ var Middleware = {
       return res.json(400, {
         success: false,
         error:
-          "There are only " +
+          'There are only ' +
           pixelsLeft +
-          " pixels remaining to buy. Please purchase this amount or less."
+          ' pixels remaining to buy. Please purchase this amount or less.'
       });
     }
 
@@ -100,35 +98,35 @@ var Middleware = {
     if (!cardName) {
       return res.json(400, {
         success: false,
-        error: "You must provide the name lisited on your credit card."
+        error: 'You must provide the name lisited on your credit card.'
       });
     }
 
     if (!cardNum || isNaN(cardNum)) {
       return res.json(400, {
         success: false,
-        error: "You must provide a valid card number."
+        error: 'You must provide a valid card number.'
       });
     }
 
     if (!cardMonth) {
       return res.json(400, {
         success: false,
-        error: "You must provide a valid card expiration month."
+        error: 'You must provide a valid card expiration month.'
       });
     }
 
     if (!cardYear) {
       return res.json(400, {
         success: false,
-        error: "You must provide a valid card expiration year."
+        error: 'You must provide a valid card expiration year.'
       });
     }
 
     if (!cardCVV) {
       return res.json(400, {
         success: false,
-        error: "You must provide a valid CVV code."
+        error: 'You must provide a valid CVV code.'
       });
     }
 
@@ -142,17 +140,17 @@ var Middleware = {
     var badLastname = SwearJar.profane(potentialUser.lastname);
 
     if (badFirstname || badLastname) {
-      var message = "";
+      var message = '';
 
       if (badFirstname && badLastname) {
         message =
-          "Could not sign you up. You there is profanity in your first name and last name!";
+          'Could not sign you up. You there is profanity in your first name and last name!';
       } else if (badFirstname) {
         message =
-          "Could not sign you up. You there is profanity in your first name!";
+          'Could not sign you up. You there is profanity in your first name!';
       } else if (badLastname) {
         message =
-          "Could not sign you up. You there is profanity in your last name!";
+          'Could not sign you up. You there is profanity in your last name!';
       }
 
       return res.json(400, { error: message });
@@ -163,7 +161,7 @@ var Middleware = {
 
   filterProfanity: function(req, res, next) {
     if (!req.body.message) {
-      req.body.message = "Thanks for donating :)";
+      req.body.message = 'Thanks for donating :)';
       return next();
     }
 

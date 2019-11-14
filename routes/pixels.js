@@ -1,11 +1,9 @@
-var express = require("express"),
-  PixelSchema = require("../schemas/pixel"),
-  PixelHandler = require("../factories/pixelHandlerv2"),
+var express = require('express'),
+  PixelSchema = require('../schemas/pixel'),
+  PixelHandler = require('../factories/pixelHandlerv2'),
   PixelRouter = express.Router({ mergeParams: true });
 
-PixelRouter.get("/", function(req, res) {
-  //console.log('Hitting pixel metadata route!');
-
+PixelRouter.get('/', function(req, res) {
   if (!req.query.x || !req.query.y) {
     return res.json(400, { success: false });
   }
@@ -13,11 +11,10 @@ PixelRouter.get("/", function(req, res) {
   var x = req.query.x;
   var y = req.query.y;
 
-  PixelSchema.findOne({ "pixel.x": x, "pixel.y": y })
+  PixelSchema.findOne({ 'pixel.x': x, 'pixel.y': y })
     .lean()
-    .populate("buyer.id")
+    .populate('buyer.id')
     .exec(function(err, result) {
-      //console.log(result);
       if (err) {
         console.error(err);
         return res.json({ success: false });
@@ -37,7 +34,7 @@ PixelRouter.get("/", function(req, res) {
     });
 });
 
-PixelRouter.get("/percentage", function(req, res) {
+PixelRouter.get('/percentage', function(req, res) {
   res.json({ percentage: PixelHandler.getPurchasePercent() });
 });
 
