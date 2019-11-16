@@ -4,7 +4,8 @@
   "description": "Project for IT353 at Illinois State University. Fundraiser for Feed My Starving Children organiation.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prod": "NODE_ENV=production node app.js",
+    "build": "gulp scripts"
   },
   "author": "Jonathan Mitchell",
   "license": "ISC",
